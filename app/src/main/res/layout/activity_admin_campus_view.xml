@@ -1,0 +1,184 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/background_primary"
+    >
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fillViewport="true"
+        android:background="@color/background_secondary">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="16dp">
+
+            <TextView
+                android:id="@+id/header"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="School Management"
+                android:textSize="32sp"
+                android:textStyle="bold"
+                android:textColor="@color/text_primary"
+                android:layout_gravity="start"
+                android:paddingBottom="24dp"
+                android:fontFamily="sans-serif-medium"/>
+
+            <GridLayout
+                android:id="@+id/management_grid"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:columnCount="2"
+                android:rowCount="4"
+                android:layout_gravity="center"
+                android:useDefaultMargins="true"
+                android:alignmentMode="alignMargins"
+                android:background="@android:color/transparent">
+
+                <!-- Student Management -->
+                <androidx.cardview.widget.CardView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_columnWeight="1"
+                    android:layout_margin="8dp"
+                    app:cardBackgroundColor="@color/background_tertiary"
+                    app:cardCornerRadius="8dp"
+                    app:cardElevation="4dp">
+
+                    <Button
+                        android:id="@+id/btn_student_management"
+                        android:layout_width="match_parent"
+                        android:layout_height="120dp"
+                        android:text="Student Management"
+                        android:textColor="@color/text_primary"
+                        android:background="?attr/selectableItemBackground"/>
+                </androidx.cardview.widget.CardView>
+
+                <!-- Teacher Management -->
+                <androidx.cardview.widget.CardView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_columnWeight="1"
+                    android:layout_margin="8dp"
+                    app:cardBackgroundColor="@color/background_tertiary"
+                    app:cardCornerRadius="8dp"
+                    app:cardElevation="4dp">
+
+                    <Button
+                        android:id="@+id/btn_teacher_management"
+                        android:layout_width="match_parent"
+                        android:layout_height="120dp"
+                        android:text="Teacher Management"
+                        android:textColor="@color/text_primary"
+                        android:background="?attr/selectableItemBackground"/>
+                </androidx.cardview.widget.CardView>
+
+                <!-- Subjects and Curriculum -->
+                <androidx.cardview.widget.CardView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_columnWeight="1"
+                    android:layout_margin="8dp"
+                    app:cardBackgroundColor="@color/background_tertiary"
+                    app:cardCornerRadius="8dp"
+                    app:cardElevation="4dp">
+
+                    <Button
+                        android:id="@+id/btn_subjects_curriculum"
+                        android:layout_width="match_parent"
+                        android:layout_height="120dp"
+                        android:text="Subjects and Curriculum"
+                        android:textColor="@color/text_primary"
+                        android:background="?attr/selectableItemBackground"/>
+                </androidx.cardview.widget.CardView>
+
+                <!-- Attendance Management -->
+                <androidx.cardview.widget.CardView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_columnWeight="1"
+                    android:layout_margin="8dp"
+                    app:cardBackgroundColor="@color/background_tertiary"
+                    app:cardCornerRadius="8dp"
+                    app:cardElevation="4dp">
+
+                    <Button
+                        android:id="@+id/btn_attendance"
+                        android:layout_width="match_parent"
+                        android:layout_height="120dp"
+                        android:text="Attendance Management"
+                        android:textColor="@color/text_primary"
+                        android:background="?attr/selectableItemBackground"/>
+                </androidx.cardview.widget.CardView>
+
+                <!-- Results -->
+                <androidx.cardview.widget.CardView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_columnWeight="1"
+                    android:layout_margin="8dp"
+                    app:cardBackgroundColor="@color/background_tertiary"
+                    app:cardCornerRadius="8dp"
+                    app:cardElevation="4dp">
+
+                    <Button
+                        android:id="@+id/btn_results"
+                        android:layout_width="match_parent"
+                        android:layout_height="120dp"
+                        android:text="Results"
+                        android:textColor="@color/text_primary"
+                        android:background="?attr/selectableItemBackground"/>
+                </androidx.cardview.widget.CardView>
+
+                <!-- Fee Management -->
+                <androidx.cardview.widget.CardView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_columnWeight="1"
+                    android:layout_margin="8dp"
+                    app:cardBackgroundColor="@color/background_tertiary"
+                    app:cardCornerRadius="8dp"
+                    app:cardElevation="4dp">
+
+                    <Button
+                        android:id="@+id/btn_fee_management"
+                        android:layout_width="match_parent"
+                        android:layout_height="120dp"
+                        android:text="Fee Management"
+                        android:textColor="@color/text_primary"
+                        android:background="?attr/selectableItemBackground"/>
+                </androidx.cardview.widget.CardView>
+
+                <!-- Alumni -->
+                <androidx.cardview.widget.CardView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_columnWeight="1"
+                    android:layout_margin="8dp"
+                    app:cardBackgroundColor="@color/background_tertiary"
+                    app:cardCornerRadius="8dp"
+                    app:cardElevation="4dp">
+
+                    <Button
+                        android:id="@+id/btn_alumni"
+                        android:layout_width="match_parent"
+                        android:layout_height="120dp"
+                        android:text="Alumni"
+                        android:textColor="@color/text_primary"
+                        android:background="?attr/selectableItemBackground"/>
+                </androidx.cardview.widget.CardView>
+
+            </GridLayout>
+        </LinearLayout>
+    </ScrollView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
