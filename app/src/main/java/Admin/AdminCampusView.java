@@ -5,17 +5,26 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
+
 import com.example.lms.R;
 import androidx.appcompat.app.AppCompatActivity;
 
-import Shared.SharedStudentList;
+import Shared.SharedList;
 
 public class AdminCampusView extends AppCompatActivity {
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_admin_campus_view);
+
+
+        Intent intent = getIntent();
+        String campName = intent.getStringExtra("Campus Name");
+        TextView header = findViewById(R.id.header);
+        header.setText(campName);
 
         // Initialize buttons
         Button btnStudentManagement = findViewById(R.id.btn_student_management);
@@ -29,15 +38,16 @@ public class AdminCampusView extends AppCompatActivity {
         btnStudentManagement.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                navigateToActivity(SharedStudentList.class);
+                navigateToActivity(SharedList.class, "students");
             }
         });
 
         btnTeacherManagement.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                navigateToActivity("Teacher Management");
+                navigateToActivity(SharedList.class, "teachers");
             }
+
         });
 
         btnSubjectsCurriculum.setOnClickListener(new View.OnClickListener() {
@@ -76,11 +86,16 @@ public class AdminCampusView extends AppCompatActivity {
         });
     }
 
-    // Helper method to navigate to another activity
-    private void navigateToActivity(String managementType) {
+    private void navigateToActivity( String managementType) {
 //        Intent intent = new Intent(AdminCampusView.this, ManagementViewActivity.class);
-//        intent.putExtra("ManagementType", managementType);
+//        intent.putExtra("type", managementType);
 //        startActivity(intent);
+    }
+    // Helper method to navigate to another activity
+    private void navigateToActivity(Class<?> targetActivity, String managementType) {
+        Intent intent = new Intent(AdminCampusView.this, targetActivity);
+        intent.putExtra("type", managementType);
+        startActivity(intent);
     }
     private void navigateToActivity( Class<?> targetActivity) {
         Intent intent = new Intent(AdminCampusView.this, targetActivity);

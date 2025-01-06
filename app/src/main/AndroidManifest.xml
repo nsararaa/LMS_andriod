@@ -12,7 +12,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.LMS"
         tools:targetApi="31">
-        
+        <activity
+            android:name="Admin.AdminTeacherView"
+            android:exported="false" />
         <activity
             android:name="Admin.TeacherList"
             android:exported="false" />
@@ -20,7 +22,7 @@
             android:name="Admin.AdminStudentView"
             android:exported="false" />
         <activity
-            android:name="Shared.SharedStudentList"
+            android:name="Shared.SharedList"
             android:exported="false" />
         <activity
             android:name="Admin.AdminCampusView"

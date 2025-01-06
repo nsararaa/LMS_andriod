@@ -14,7 +14,7 @@
     <color name="background_secondary">#1E293B</color>
     <color name="background_tertiary">#334155</color>
 
-    <!-- Light Background (New Addition) -->
+    <!-- Light Background -->
     <color name="background_light">#F1F5F9</color>
     <color name="background_light_variant">#E2E8F0</color>
 
