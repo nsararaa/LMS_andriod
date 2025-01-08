@@ -13,6 +13,33 @@
         android:theme="@style/Theme.LMS"
         tools:targetApi="31">
         <activity
+            android:name="Admin.addStudent"
+            android:exported="false" />
+        <activity
+            android:name="Attendance.ViewAttendance"
+            android:exported="false" />
+        <activity
+            android:name="Attendance.MarkAttendance"
+            android:exported="false" />
+        <activity
+            android:name="Admin.Subjects.SingleSubjectVie"
+            android:exported="false" />
+        <activity
+            android:name="Admin.Subjects.SubjectDashboard"
+            android:exported="false" />
+        <activity
+            android:name="Admin.Subjects.SubjectItem"
+            android:exported="false" />
+        <activity
+            android:name="Admin.Subjects.SubjectAndCurri"
+            android:exported="false" />
+        <activity
+            android:name="Admin.SubjectIteam"
+            android:exported="false" />
+        <activity
+            android:name="Admin.SubjectAndCurriculum"
+            android:exported="false" />
+        <activity
             android:name="Admin.AdminTeacherView"
             android:exported="false" />
         <activity

@@ -10,6 +10,7 @@ import android.widget.TextView;
 import com.example.lms.R;
 import androidx.appcompat.app.AppCompatActivity;
 
+import Admin.Subjects.SubjectDashboard;
 import Shared.SharedList;
 
 public class AdminCampusView extends AppCompatActivity {
@@ -53,7 +54,7 @@ public class AdminCampusView extends AppCompatActivity {
         btnSubjectsCurriculum.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                navigateToActivity("Subjects and Curriculum");
+                navigateToActivity(SubjectDashboard.class, "Subjects and Curriculum");
             }
         });
 
