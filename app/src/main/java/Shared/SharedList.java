@@ -6,6 +6,7 @@ import android.text.Editable;
 import android.text.TextWatcher;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
+import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
@@ -13,10 +14,12 @@ import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
 import com.example.lms.R;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.textfield.TextInputEditText;
 
-import Admin.AdminStudentView;
+import Admin.AdminSingleStudentView;
 import Admin.AdminTeacherView;
+import Admin.addStudent;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -28,8 +31,9 @@ public class SharedList extends AppCompatActivity {
     private static final String TYPE_STUDENTS = "students";
     private static final String TYPE_TEACHERS = "teachers";
 
-    private String type; // Declare `type` here
-
+    private String type;
+    private FloatingActionButton addSubjectFab;
+    TextView header;
     private String[] getStudentNames() {
         // TODO: Replace with actual data source
         return new String[]{"John", "Alice", "Michael"};
@@ -43,19 +47,17 @@ public class SharedList extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_shared_student_list);
+        setContentView(R.layout.activity_shared_list);
 
-        // Get the "type" from Intent
         type = getIntent().getStringExtra("type");
 
-        // Setup window insets
+        addSubjectFab = findViewById(R.id.addSubjectFab);
+        header = findViewById(R.id.header);
         setupWindowInsets();
-
-        // Initialize the list based on type
         initializeList();
-
-        // Load the list into the UI
+        setupFabButton();
         loadList();
+
     }
 
     private void setupWindowInsets() {
@@ -70,12 +72,28 @@ public class SharedList extends AppCompatActivity {
         // Populate names based on the type
         if (TYPE_STUDENTS.equals(type)) {
             allNames = getStudentNames();
+            header.setText("Student's");
         } else if (TYPE_TEACHERS.equals(type)) {
             allNames = getTeacherNames();
+            header.setText("Teacher's");
         } else {
-            allNames = new String[0]; // Empty list for invalid type
+            allNames = new String[0]; // empty if invalid type
         }
         filteredList = new ArrayList<>(Arrays.asList(allNames));
+
+    }
+    private void setupFabButton() {
+
+        addSubjectFab.setOnClickListener(v -> {
+            if (TYPE_STUDENTS.equals(type)) {
+                Intent i = new Intent(SharedList.this, addStudent.class);
+                startActivity(i);
+            } else if (TYPE_TEACHERS.equals(type)) {
+//                Intent i = new Intent(SharedList.this, addTeacher.class);
+//                startActivity(i);
+            }
+
+        });
     }
 
     private void loadList() {
@@ -120,13 +138,13 @@ public class SharedList extends AppCompatActivity {
 
             Intent intent;
             if (TYPE_STUDENTS.equals(type)) {
-                intent = new Intent(SharedList.this, AdminStudentView.class);
+                intent = new Intent(SharedList.this, AdminSingleStudentView.class);
                 intent.putExtra("selectedStudentKey", selectedItem);
             } else if (TYPE_TEACHERS.equals(type)) {
                 intent = new Intent(SharedList.this, AdminTeacherView.class);
                 intent.putExtra("selectedTeacherKey", selectedItem);
             } else {
-                return; // Do nothing for invalid type
+                return; 
             }
             startActivity(intent);
         });

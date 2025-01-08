@@ -1,5 +1,8 @@
 package Models;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Student {
     private int rfid;
     private String studentName;
@@ -14,8 +17,8 @@ public class Student {
     private int year;
     private int campusId;
     private int feeAmount;
+    private List<String> subjects;
 
-    // Private constructor to enforce the use of builder
     private Student(StudentBuilder builder) {
         this.rfid = builder.rfid;
         this.studentName = builder.studentName;
@@ -30,23 +33,25 @@ public class Student {
         this.year = builder.year;
         this.campusId = builder.campusId;
         this.feeAmount = builder.feeAmount;
+        this.subjects = builder.subjects;
     }
 
-    // Builder class
     public static class StudentBuilder {
+
         private int rfid;
         private String studentName;
         private String phoneNumber;
-        private String pictureUrl = ""; // default value
-        private int daysAttended = 0;   // default value
+        private String pictureUrl = "";
+        private int daysAttended = 0;
         private String password;
-        private int totalDays = 0;      // default value
-        private int fine = 0;           // default value
+        private int totalDays = 0;
+        private int fine = 0;
         private int studentId;
-        private String absenteeId = ""; // default value
+        private String absenteeId = "";
         private int year;
         private int campusId;
         private int feeAmount;
+        private List<String> subjects = new ArrayList<>();
 
         public StudentBuilder(String studentName, String phoneNumber, String password) {
             this.studentName = studentName;
@@ -54,6 +59,7 @@ public class Student {
             this.password = password;
         }
 
+        // Existing builder methods...
         public StudentBuilder rfid(int rfid) {
             this.rfid = rfid;
             return this;
@@ -104,12 +110,17 @@ public class Student {
             return this;
         }
 
+        public StudentBuilder subjects(List<String> subjects) {
+            this.subjects = new ArrayList<>(subjects);
+            return this;
+        }
+
         public Student build() {
             return new Student(this);
         }
     }
 
-    // Getters
+
     public int getRfid() { return rfid; }
     public String getStudentName() { return studentName; }
     public String getPhoneNumber() { return phoneNumber; }
@@ -123,8 +134,9 @@ public class Student {
     public int getYear() { return year; }
     public int getCampusId() { return campusId; }
     public int getFeeAmount() { return feeAmount; }
+    public List<String> getSubjects() { return new ArrayList<>(subjects); }
 
-    // Utility methods
+
     public double getAttendancePercentage() {
         if (totalDays == 0) return 0.0;
         return ((double) daysAttended / totalDays) * 100;
@@ -136,23 +148,5 @@ public class Student {
 
     public boolean hasFines() {
         return fine > 0;
-    }
-
-    @Override
-    public String toString() {
-        return "Student{" +
-                "rfid=" + rfid +
-                ", studentName='" + studentName + '\'' +
-                ", phoneNumber='" + phoneNumber + '\'' +
-                ", pictureUrl='" + pictureUrl + '\'' +
-                ", daysAttended=" + daysAttended +
-                ", totalDays=" + totalDays +
-                ", fine=" + fine +
-                ", studentId=" + studentId +
-                ", absenteeId='" + absenteeId + '\'' +
-                ", year=" + year +
-                ", campusId=" + campusId +
-                ", feeAmount=" + feeAmount +
-                '}';
     }
 }

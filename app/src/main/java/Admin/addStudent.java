@@ -5,9 +5,13 @@ import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextUtils;
 import android.text.TextWatcher;
+import android.widget.ArrayAdapter;
+import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 
 import androidx.activity.EdgeToEdge;
+import androidx.activity.result.ActivityResultLauncher;
+import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
@@ -16,18 +20,69 @@ import androidx.core.view.WindowInsetsCompat;
 import com.example.lms.R;
 import com.google.android.material.textfield.TextInputEditText;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
 import Models.Student;
 public class addStudent extends AppCompatActivity {
     private TextInputEditText etStudentName, etPhoneNumber, etRFID, etPassword, etYear, etFeeAmount;
     private Button btnSubmit;
+    private AutoCompleteTextView subjectsDropdown;
+    private List<String> selectedSubjects = new ArrayList<>();
 
+
+    private ActivityResultLauncher<String[]> filePickerLauncher;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_student);
 
         initializeViews();
+        setupSubjectsDropdown();
         setupValidations();
+
+
+    }
+
+
+
+    private void setupSubjectsDropdown() {
+        List<String> subjects = Arrays.asList(
+                "Introduction to Programming",
+                "Data Structures",
+                "Algorithms",
+                "Database Management",
+                "Web Development",
+                "Computer Networks",
+                "Operating Systems"
+        );
+        ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_dropdown_item_1line, subjects);
+        subjectsDropdown.setAdapter(adapter);
+
+        subjectsDropdown.setOnItemClickListener((parent, view, position, id) -> {
+            String subject = parent.getItemAtPosition(position).toString();
+            subjectsDropdown.setHint("Select subjects (click again to remove)");
+            if (selectedSubjects.contains(subject)) {
+                selectedSubjects.remove(subject);
+            } else {
+                selectedSubjects.add(subject);
+            }
+            subjectsDropdown.setText("");
+            updateSubjectsDisplay();
+        });
+    }
+
+
+    private void updateSubjectsDisplay() {
+        StringBuilder display = new StringBuilder();
+        for (String subject : selectedSubjects) {
+            if (display.length() > 0) {
+                display.append(", ");
+            }
+            display.append(subject);
+        }
+        subjectsDropdown.setHint(display.toString());
     }
 
     private void initializeViews() {
@@ -37,6 +92,8 @@ public class addStudent extends AppCompatActivity {
         etPassword = findViewById(R.id.etPassword);
         etYear = findViewById(R.id.etYear);
         etFeeAmount = findViewById(R.id.etFeeAmount);
+        subjectsDropdown = findViewById(R.id.subjectsDropdown);
+
         btnSubmit = findViewById(R.id.btnSubmit);
     }
 
@@ -132,6 +189,7 @@ public class addStudent extends AppCompatActivity {
                 .studentId(generateStudentID())
                 .absenteeId(generateAbsenteeID())
                 .feeAmount(Integer.parseInt(etFeeAmount.getText().toString()))
+                .subjects(selectedSubjects)
                 .build();
 
         saveStudent(student);
@@ -173,8 +231,14 @@ public class addStudent extends AppCompatActivity {
             isValid = false;
         }
 
+        if (selectedSubjects.isEmpty()) {
+            subjectsDropdown.setError("At least one subject is required");
+            isValid = false;
+        }
         return isValid;
     }
+
+
 
     private boolean isValidYear(String yearStr) {
         try {
@@ -241,3 +305,5 @@ public class addStudent extends AppCompatActivity {
         return 0;
     }
 }
+
+//CSV LOGIC:

@@ -46,7 +46,7 @@
             android:name="Admin.TeacherList"
             android:exported="false" />
         <activity
-            android:name="Admin.AdminStudentView"
+            android:name="Admin.AdminSingleStudentView"
             android:exported="false" />
         <activity
             android:name="Shared.SharedList"

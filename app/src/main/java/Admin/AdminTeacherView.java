@@ -14,6 +14,7 @@ import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
 import com.example.lms.R;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 public class AdminTeacherView extends AppCompatActivity {
     private TextView teacherName, teacherEmail, teacherPhone;
@@ -24,6 +25,7 @@ public class AdminTeacherView extends AppCompatActivity {
     private ArrayAdapter<String> feedbackAdapter;
     private String teacherId;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -33,6 +35,7 @@ public class AdminTeacherView extends AppCompatActivity {
         initializeViews();
         loadTeacherData();
         setupListeners();
+
     }
 
     private void initializeViews() {
@@ -43,7 +46,10 @@ public class AdminTeacherView extends AppCompatActivity {
         feedbackList = findViewById(R.id.feedbackList);
         teacherRating = findViewById(R.id.teacherRating);
         viewStudentsButton = findViewById(R.id.viewStudentsButton);
+
+
     }
+
 
     private void loadTeacherData() {
         // TODO: Replace with actual data fetching
@@ -65,6 +71,7 @@ public class AdminTeacherView extends AppCompatActivity {
 
     private void setupListeners() {
         viewStudentsButton.setOnClickListener(v -> {
+            // TODO: SINGLE STUDENT VIEW REQ
 //            Intent intent = new Intent(this, ListView.class);
 //            intent.putExtra("teacherId", teacherId);
 //            startActivity(intent);
@@ -109,7 +116,7 @@ class TeacherModel {
         this.feedback = feedback;
     }
 
-    // Getters
+
     public String getName() { return name; }
     public String getEmail() { return email; }
     public String getPhone() { return phone; }

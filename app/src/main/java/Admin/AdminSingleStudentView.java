@@ -11,9 +11,57 @@ import androidx.appcompat.widget.Toolbar;
 
 import com.example.lms.R;
 
-public class AdminStudentView extends AppCompatActivity {
+public class AdminSingleStudentView extends AppCompatActivity {
 
-    // Mock data getter methods (replace with actual implementations)
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_admin_single_student_view);
+
+        // toolbar
+        Toolbar toolbar = findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setTitle("Student Profile");
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
+
+
+        TextView personalDetailsText = findViewById(R.id.personalDetailsText);
+        ListView subjectsListView = findViewById(R.id.subjectsListView);
+        TextView attendanceText = findViewById(R.id.attendanceText);
+        TextView resultsText = findViewById(R.id.resultsText);
+        TextView finesText = findViewById(R.id.finesText);
+        ListView queryHistoryListView = findViewById(R.id.queryHistoryListView);
+
+
+        //SETTERS FOR TV
+        personalDetailsText.setText(getPersonalDetails());
+        ArrayAdapter<String> subjectsAdapter = new ArrayAdapter<>(
+                this,
+                android.R.layout.simple_list_item_1,
+                getSubjectsEnrolled()
+        );
+        subjectsListView.setAdapter(subjectsAdapter);
+        attendanceText.setText(getAttendanceHistory());
+        resultsText.setText(getResultReports());
+        finesText.setText(getFinesDues());
+        ArrayAdapter<String> queryAdapter = new ArrayAdapter<>(
+                this,
+                android.R.layout.simple_list_item_1,
+                getQueryHistory()
+        );
+        queryHistoryListView.setAdapter(queryAdapter);
+    }
+
+    @Override
+    public boolean onSupportNavigateUp() {
+        onBackPressed();
+        return true;
+    }
+
+
+
+    // TODO: get from db
     private String getPersonalDetails() {
         return "Name: John Doe\nID: 12345\nClass: X-A\nContact: +1234567890";
     }
@@ -40,59 +88,5 @@ public class AdminStudentView extends AppCompatActivity {
                 "2024-01-15: Submitted leave application",
                 "2024-02-01: Asked for fee structure"
         };
-    }
-
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_admin_student_view);
-
-        // Setup toolbar
-        Toolbar toolbar = findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
-        getSupportActionBar().setTitle("Student Profile");
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-
-        // Initialize views
-        TextView personalDetailsText = findViewById(R.id.personalDetailsText);
-        ListView subjectsListView = findViewById(R.id.subjectsListView);
-        TextView attendanceText = findViewById(R.id.attendanceText);
-        TextView resultsText = findViewById(R.id.resultsText);
-        TextView finesText = findViewById(R.id.finesText);
-        ListView queryHistoryListView = findViewById(R.id.queryHistoryListView);
-
-        // Set personal details
-        personalDetailsText.setText(getPersonalDetails());
-
-        // Set subjects
-        ArrayAdapter<String> subjectsAdapter = new ArrayAdapter<>(
-                this,
-                android.R.layout.simple_list_item_1,
-                getSubjectsEnrolled()
-        );
-        subjectsListView.setAdapter(subjectsAdapter);
-
-        // Set attendance
-        attendanceText.setText(getAttendanceHistory());
-
-        // Set results
-        resultsText.setText(getResultReports());
-
-        // Set fines/dues
-        finesText.setText(getFinesDues());
-
-        // Set query history
-        ArrayAdapter<String> queryAdapter = new ArrayAdapter<>(
-                this,
-                android.R.layout.simple_list_item_1,
-                getQueryHistory()
-        );
-        queryHistoryListView.setAdapter(queryAdapter);
-    }
-
-    @Override
-    public boolean onSupportNavigateUp() {
-        onBackPressed();
-        return true;
     }
 }
