@@ -6,32 +6,30 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/background_primary"
-    >
+    android:background="@color/background_primary">
 
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:fillViewport="true"
-        android:background="@color/background_secondary">
+        android:background="@color/background_primary">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:padding="16dp">
+            android:padding="24dp">
 
             <TextView
                 android:id="@+id/header"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="School Management"
-                android:textSize="32sp"
+                android:textSize="36sp"
                 android:textStyle="bold"
-                android:textColor="@color/text_primary"
-                android:layout_gravity="start"
-                android:paddingBottom="24dp"
-                android:fontFamily="sans-serif-medium"/>
+                android:textColor="@color/text_secondary"
+                android:layout_gravity="center"
+                android:paddingBottom="32dp" />
 
             <GridLayout
                 android:id="@+id/management_grid"
@@ -46,136 +44,250 @@
 
                 <!-- Student Management -->
                 <androidx.cardview.widget.CardView
+                    android:id="@+id/student_management_card"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_columnWeight="1"
-                    android:layout_margin="8dp"
-                    app:cardBackgroundColor="@color/background_tertiary"
-                    app:cardCornerRadius="8dp"
-                    app:cardElevation="4dp">
+                    android:layout_margin="12dp"
+                    app:cardBackgroundColor="@color/background_secondary"
+                    app:cardCornerRadius="16dp"
+                    app:cardElevation="8dp">
 
-                    <Button
-                        android:id="@+id/btn_student_management"
+                    <LinearLayout
                         android:layout_width="match_parent"
-                        android:layout_height="120dp"
-                        android:text="Student Management"
-                        android:textColor="@color/text_primary"
-                        android:background="?attr/selectableItemBackground"/>
+                        android:layout_height="140dp"
+                        android:orientation="vertical"
+                        android:gravity="center"
+                        android:padding="16dp">
+                        <!--android:src="@drawable/ic_student" -->
+                        <ImageView
+                            android:layout_width="60dp"
+                            android:layout_height="60dp"
+                          android:src="@drawable/student_management"
+                            />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Student Management"
+                            android:textColor="@color/text_primary"
+                            android:textSize="16sp"
+
+                            android:layout_marginTop="8dp"
+                            android:gravity="center"/>
+                    </LinearLayout>
                 </androidx.cardview.widget.CardView>
 
-                <!-- Teacher Management -->
+
+                <!-- Student Management -->
                 <androidx.cardview.widget.CardView
+                    android:id="@+id/teacher_management_card"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_columnWeight="1"
-                    android:layout_margin="8dp"
-                    app:cardBackgroundColor="@color/background_tertiary"
-                    app:cardCornerRadius="8dp"
-                    app:cardElevation="4dp">
+                    android:layout_margin="12dp"
+                    app:cardBackgroundColor="@color/background_secondary"
+                    app:cardCornerRadius="16dp"
+                    app:cardElevation="8dp">
 
-                    <Button
-                        android:id="@+id/btn_teacher_management"
+                    <LinearLayout
                         android:layout_width="match_parent"
-                        android:layout_height="120dp"
-                        android:text="Teacher Management"
-                        android:textColor="@color/text_primary"
-                        android:background="?attr/selectableItemBackground"/>
-                </androidx.cardview.widget.CardView>
+                        android:layout_height="140dp"
+                        android:orientation="vertical"
+                        android:gravity="center"
+                        android:padding="16dp">
 
-                <!-- Subjects and Curriculum -->
+                        <ImageView
+                            android:layout_width="60dp"
+                            android:layout_height="60dp"
+                            android:src="@drawable/teacher_management"
+                            />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Teacher Management"
+                            android:textColor="@color/text_primary"
+                            android:textSize="16sp"
+
+                            android:layout_marginTop="8dp"
+                            android:gravity="center"/>
+                    </LinearLayout>
+                </androidx.cardview.widget.CardView>
                 <androidx.cardview.widget.CardView
+                    android:id="@+id/subject_management_card"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_columnWeight="1"
-                    android:layout_margin="8dp"
-                    app:cardBackgroundColor="@color/background_tertiary"
-                    app:cardCornerRadius="8dp"
-                    app:cardElevation="4dp">
+                    android:layout_margin="12dp"
+                    app:cardBackgroundColor="@color/background_secondary"
+                    app:cardCornerRadius="16dp"
+                    app:cardElevation="8dp">
 
-                    <Button
-                        android:id="@+id/btn_subjects_curriculum"
+                    <LinearLayout
                         android:layout_width="match_parent"
-                        android:layout_height="120dp"
-                        android:text="Subjects and Curriculum"
-                        android:textColor="@color/text_primary"
-                        android:background="?attr/selectableItemBackground"/>
+                        android:layout_height="140dp"
+                        android:orientation="vertical"
+                        android:gravity="center"
+                        android:padding="16dp">
+
+                        <ImageView
+                            android:layout_width="60dp"
+                            android:layout_height="60dp"
+                            android:src="@drawable/subject_management"
+                            />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Subject Management"
+                            android:textColor="@color/text_primary"
+                            android:textSize="16sp"
+
+                            android:layout_marginTop="8dp"
+                            android:gravity="center"/>
+                    </LinearLayout>
                 </androidx.cardview.widget.CardView>
 
-                <!-- Attendance Management -->
                 <androidx.cardview.widget.CardView
+                    android:id="@+id/attendance_management_card"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_columnWeight="1"
-                    android:layout_margin="8dp"
-                    app:cardBackgroundColor="@color/background_tertiary"
-                    app:cardCornerRadius="8dp"
-                    app:cardElevation="4dp">
+                    android:layout_margin="12dp"
+                    app:cardBackgroundColor="@color/background_secondary"
+                    app:cardCornerRadius="16dp"
+                    app:cardElevation="8dp">
 
-                    <Button
-                        android:id="@+id/btn_attendance"
+                    <LinearLayout
                         android:layout_width="match_parent"
-                        android:layout_height="120dp"
-                        android:text="Attendance Management"
-                        android:textColor="@color/text_primary"
-                        android:background="?attr/selectableItemBackground"/>
+                        android:layout_height="140dp"
+                        android:orientation="vertical"
+                        android:gravity="center"
+                        android:padding="16dp">
+
+                        <ImageView
+                            android:layout_width="60dp"
+                            android:layout_height="60dp"
+                            android:src="@drawable/attendance_management"
+                            />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Attendance Management"
+                            android:textColor="@color/text_primary"
+                            android:textSize="16sp"
+
+                            android:layout_marginTop="8dp"
+                            android:gravity="center"/>
+                    </LinearLayout>
                 </androidx.cardview.widget.CardView>
 
-                <!-- Results -->
                 <androidx.cardview.widget.CardView
+                    android:id="@+id/result_management_card"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_columnWeight="1"
-                    android:layout_margin="8dp"
-                    app:cardBackgroundColor="@color/background_tertiary"
-                    app:cardCornerRadius="8dp"
-                    app:cardElevation="4dp">
+                    android:layout_margin="12dp"
+                    app:cardBackgroundColor="@color/background_secondary"
+                    app:cardCornerRadius="16dp"
+                    app:cardElevation="8dp">
 
-                    <Button
-                        android:id="@+id/btn_results"
+                    <LinearLayout
                         android:layout_width="match_parent"
-                        android:layout_height="120dp"
-                        android:text="Results"
-                        android:textColor="@color/text_primary"
-                        android:background="?attr/selectableItemBackground"/>
+                        android:layout_height="140dp"
+                        android:orientation="vertical"
+                        android:gravity="center"
+                        android:padding="16dp">
+
+                        <ImageView
+                            android:layout_width="60dp"
+                            android:layout_height="60dp"
+                            android:src="@drawable/result_management"
+                            />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Result Management"
+                            android:textColor="@color/text_primary"
+                            android:textSize="16sp"
+
+                            android:layout_marginTop="8dp"
+                            android:gravity="center"/>
+                    </LinearLayout>
                 </androidx.cardview.widget.CardView>
 
-                <!-- Fee Management -->
                 <androidx.cardview.widget.CardView
+                    android:id="@+id/fee_management_card"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_columnWeight="1"
-                    android:layout_margin="8dp"
-                    app:cardBackgroundColor="@color/background_tertiary"
-                    app:cardCornerRadius="8dp"
-                    app:cardElevation="4dp">
+                    android:layout_margin="12dp"
+                    app:cardBackgroundColor="@color/background_secondary"
+                    app:cardCornerRadius="16dp"
+                    app:cardElevation="8dp">
 
-                    <Button
-                        android:id="@+id/btn_fee_management"
+                    <LinearLayout
                         android:layout_width="match_parent"
-                        android:layout_height="120dp"
-                        android:text="Fee Management"
-                        android:textColor="@color/text_primary"
-                        android:background="?attr/selectableItemBackground"/>
+                        android:layout_height="140dp"
+                        android:orientation="vertical"
+                        android:gravity="center"
+                        android:padding="16dp">
+
+                        <ImageView
+                            android:layout_width="60dp"
+                            android:layout_height="60dp"
+                            android:src="@drawable/fee_management"
+                            />
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Fee Management"
+                            android:textColor="@color/text_primary"
+                            android:textSize="16sp"
+
+                            android:layout_marginTop="8dp"
+                            android:gravity="center"/>
+                    </LinearLayout>
                 </androidx.cardview.widget.CardView>
 
-                <!-- Alumni -->
                 <androidx.cardview.widget.CardView
+                    android:id="@+id/alumni_management_card"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_columnWeight="1"
-                    android:layout_margin="8dp"
-                    app:cardBackgroundColor="@color/background_tertiary"
-                    app:cardCornerRadius="8dp"
-                    app:cardElevation="4dp">
+                    android:layout_margin="12dp"
+                    app:cardBackgroundColor="@color/background_secondary"
+                    app:cardCornerRadius="16dp"
+                    app:cardElevation="8dp">
 
-                    <Button
-                        android:id="@+id/btn_alumni"
+                    <LinearLayout
                         android:layout_width="match_parent"
-                        android:layout_height="120dp"
-                        android:text="Alumni"
-                        android:textColor="@color/text_primary"
-                        android:background="?attr/selectableItemBackground"/>
+                        android:layout_height="140dp"
+                        android:orientation="vertical"
+                        android:gravity="center"
+                        android:padding="16dp">
+
+                        <ImageView
+                            android:layout_width="60dp"
+                            android:layout_height="60dp"
+                            android:src="@drawable/alumni_management"
+                            />
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Alumni Management"
+                            android:textColor="@color/text_primary"
+                            android:textSize="16sp"
+
+                            android:layout_marginTop="8dp"
+                            android:gravity="center"/>
+                    </LinearLayout>
                 </androidx.cardview.widget.CardView>
+
+                <!-- Continue the same pattern for remaining cards -->
 
             </GridLayout>
         </LinearLayout>

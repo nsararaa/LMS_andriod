@@ -1,9 +1,11 @@
-package Attendance;
+package Shared.Attendance;
+
 import android.os.Bundle;
-import android.view.View;
+import android.text.TextUtils;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
 import android.widget.Toast;
+
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -12,12 +14,14 @@ import com.example.lms.R;
 import com.google.android.material.button.MaterialButton;
 import com.google.android.material.datepicker.MaterialDatePicker;
 import com.google.android.material.textfield.TextInputEditText;
-import com.google.android.material.textfield.TextInputLayout;
+
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.Locale;
+
+import Models.StudentAttendance;
 
 public class MarkAttendance extends AppCompatActivity {
     private TextInputEditText datePickerEdit;
@@ -27,30 +31,31 @@ public class MarkAttendance extends AppCompatActivity {
     private StudentAttendanceAdapter attendanceAdapter;
     private SimpleDateFormat dateFormatter;
 
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_mark_attendance);
+    private static final String DATE_PICKER_TAG = "DATE_PICKER";
 
-        // Initialize views
+
+    void initViews(){
         datePickerEdit = findViewById(R.id.datePickerEdit);
         classSpinner = findViewById(R.id.classSpinner);
         studentsRecyclerView = findViewById(R.id.studentsRecyclerView);
         saveButton = findViewById(R.id.saveButton);
 
-        // Setup date formatter
+    }
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_mark_attendance);
+
+
+        initViews();
+
+
         dateFormatter = new SimpleDateFormat("dd MMM yyyy", Locale.getDefault());
 
-        // Setup date picker
+        // init UI
         setupDatePicker();
-
-        // Setup class spinner
         setupClassSpinner();
-
-        // Setup RecyclerView
         setupRecyclerView();
-
-        // Setup save button
         setupSaveButton();
     }
 
@@ -60,7 +65,7 @@ public class MarkAttendance extends AppCompatActivity {
                 .setSelection(MaterialDatePicker.todayInUtcMilliseconds())
                 .build();
 
-        datePickerEdit.setOnClickListener(v -> datePicker.show(getSupportFragmentManager(), "DATE_PICKER"));
+        datePickerEdit.setOnClickListener(v -> datePicker.show(getSupportFragmentManager(), DATE_PICKER_TAG));
 
         datePicker.addOnPositiveButtonClickListener(selection -> {
             String formattedDate = dateFormatter.format(new Date(selection));
@@ -68,13 +73,20 @@ public class MarkAttendance extends AppCompatActivity {
             loadStudentsForDate(formattedDate);
         });
 
-        // Set current date by default
+
+
         datePickerEdit.setText(dateFormatter.format(new Date()));
     }
 
+    // GET FROM DB TODO:
+    String[] getSubjects(){
+        String[] subs = {"Physics", "math", "urdu"};
+        return subs;
+    }
+
     private void setupClassSpinner() {
-        // Sample class list - replace with your actual class data
-        String[] classes = new String[]{"Class 1", "Class 2", "Class 3", "Class 4"};
+        String[] classes = getSubjects();
+
         ArrayAdapter<String> adapter = new ArrayAdapter<>(
                 this,
                 android.R.layout.simple_dropdown_item_1line,
@@ -98,34 +110,67 @@ public class MarkAttendance extends AppCompatActivity {
         saveButton.setOnClickListener(v -> saveAttendance());
     }
 
-    private void loadStudentsForDate(String date) {
-        // TODO: Implement loading students for selected date
-        // This should be implemented based on your data source
-    }
-
-    private void loadStudentsForClass(String className) {
-        // TODO: Implement loading students for selected class
-        // This should be implemented based on your data source
-    }
-
     private void saveAttendance() {
-        // Validate inputs
-        if (datePickerEdit.getText().toString().isEmpty()) {
+        String date = datePickerEdit.getText().toString();
+        String selectedClass = classSpinner.getText().toString();
+
+        if (TextUtils.isEmpty(date)) {
             Toast.makeText(this, "Please select a date", Toast.LENGTH_SHORT).show();
             return;
         }
 
-        if (classSpinner.getText().toString().isEmpty()) {
-            Toast.makeText(this, "Please select a class", Toast.LENGTH_SHORT).show();
+        if (TextUtils.isEmpty(selectedClass)) {
+            Toast.makeText(this, "Please select a subject", Toast.LENGTH_SHORT).show();
             return;
         }
 
-        // Get attendance data from adapter
         List<StudentAttendance> attendanceList = attendanceAdapter.getAttendanceList();
 
-        // TODO: Implement saving attendance to your data source
-        // For now, just show a success message
+        // Save attendance TODO:
         Toast.makeText(this, "Attendance saved successfully", Toast.LENGTH_SHORT).show();
         finish();
+    }
+
+    private void loadStudentsForClass(String className) {
+        //  Replace with actual data TODO:
+        List<StudentAttendance> studentList = DummyStudentData.getStudentsForClass(className, datePickerEdit.getText().toString());
+        attendanceAdapter = new StudentAttendanceAdapter(studentList);
+        studentsRecyclerView.setAdapter(attendanceAdapter);
+    }
+
+    private void loadStudentsForDate(String date) {
+        String currentClass = classSpinner.getText().toString();
+        if (!TextUtils.isEmpty(currentClass)) {
+            loadStudentsForClass(currentClass);
+        }
+    }
+}
+
+// DUMMY REMOVE LATER
+class DummyStudentData {
+    static List<StudentAttendance> getStudentsForClass(String className, String date) {
+        List<StudentAttendance> students = new ArrayList<>();
+
+        switch (className) {
+            case "Class 1":
+                students.add(new StudentAttendance(1001, "John Smith", "STU001", true, date));
+                students.add(new StudentAttendance(1002, "Sarah Johnson", "STU002", true, date));
+
+                break;
+            case "Class 2":
+                students.add(new StudentAttendance(2001, "Emma Thompson", "STU006", true, date));
+
+                break;
+            case "Class 3":
+                students.add(new StudentAttendance(3001, "Lucas Martin", "STU011", true, date));
+
+                break;
+            case "Class 4":
+                students.add(new StudentAttendance(4001, "Ethan Wright", "STU016", true, date));
+
+                break;
+        }
+
+        return students;
     }
 }

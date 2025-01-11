@@ -18,9 +18,10 @@
             android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
 
             <TextView
+                android:id="@+id/tvTitle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Attendance Records"
+                android:text="Attendance Dashboard"
                 android:textColor="@color/white"
                 android:textSize="20sp"
                 android:textStyle="bold" />
@@ -38,6 +39,7 @@
             android:orientation="vertical"
             android:padding="16dp">
 
+            <!-- Mode Selection Card -->
             <com.google.android.material.card.MaterialCardView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -55,55 +57,45 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Today's Overview"
+                        android:text="Select Action"
                         android:textColor="@color/text_primary"
                         android:textSize="18sp"
                         android:textStyle="bold" />
 
-                    <LinearLayout
+                    <com.google.android.material.button.MaterialButtonToggleGroup
+                        android:id="@+id/toggleGroup"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="16dp"
-                        android:orientation="horizontal">
+                        app:singleSelection="true">
 
-                        <TextView
-                            android:id="@+id/tvPresentCount"
+                        <com.google.android.material.button.MaterialButton
+                            android:id="@+id/btnView"
+                            style="@style/Widget.MaterialComponents.Button.OutlinedButton"
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
-                            android:gravity="center"
-                            android:text="Present: 0"
-                            android:textColor="@color/success_color" />
+                            android:text="View Attendance"
+                            android:textColor="@color/text_primary" />
 
-                        <TextView
-                            android:id="@+id/tvAbsentCount"
+                        <com.google.android.material.button.MaterialButton
+                            android:id="@+id/btnMark"
+                            style="@style/Widget.MaterialComponents.Button.OutlinedButton"
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
-                            android:gravity="center"
-                            android:text="Absent: 0"
-                            android:textColor="@color/error_color" />
-                    </LinearLayout>
+                            android:text="Mark Attendance"
+                            android:textColor="@color/text_primary" />
+                    </com.google.android.material.button.MaterialButtonToggleGroup>
                 </LinearLayout>
             </com.google.android.material.card.MaterialCardView>
 
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/rvAttendance"
+            <!-- Content Container -->
+            <FrameLayout
+                android:id="@+id/contentContainer"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:nestedScrollingEnabled="false" />
+                android:layout_height="match_parent" />
 
         </LinearLayout>
     </androidx.core.widget.NestedScrollView>
-
-    <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/fabRefresh"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="bottom|end"
-        android:layout_margin="16dp"
-        android:src="@android:drawable/ic_popup_sync"
-        app:backgroundTint="@color/primary_color"
-        app:tint="@color/white" />
-
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

@@ -16,6 +16,7 @@ import androidx.core.view.WindowInsetsCompat;
 import com.example.lms.R;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
+import Models.Teacher;
 public class AdminTeacherView extends AppCompatActivity {
     private TextView teacherName, teacherEmail, teacherPhone;
     private ListView subjectsList, feedbackList;
@@ -52,8 +53,8 @@ public class AdminTeacherView extends AppCompatActivity {
 
 
     private void loadTeacherData() {
-        // TODO: Replace with actual data fetching
-        TeacherModel teacher = getTeacherData(teacherId);
+        // replace w actual fetching TODO
+        Teacher teacher = getTeacherData(teacherId);
 
         teacherName.setText(teacher.getName());
         teacherEmail.setText(teacher.getEmail());
@@ -83,44 +84,20 @@ public class AdminTeacherView extends AppCompatActivity {
         });
     }
 
-    private TeacherModel getTeacherData(String teacherId) {
-        // TODO: Replace with actual API/database call
-        return new TeacherModel(
-                "John Doe",
-                "john.doe@school.com",
+    private Teacher getTeacherData(String teacherId) {
+        //db call TODO
+        return new Teacher(
+                "Sarfraz raza",
+                "sarfraz@school.com",
                 "+1234567890",
                 4.5f,
                 new String[]{"Mathematics", "Physics"},
-                new String[]{"Great teacher!", "Very helpful"}
+                new String[]{ "Very helpful"}
         );
     }
 
     private void showSubjectDetails(String subject) {
-        // TODO: Implement subject details dialog or activity
+        // TODO chnage intent?
     }
 }
 
-class TeacherModel {
-    private String name, email, phone;
-    private float rating;
-    private String[] subjects;
-    private String[] feedback;
-
-    public TeacherModel(String name, String email, String phone,
-                        float rating, String[] subjects, String[] feedback) {
-        this.name = name;
-        this.email = email;
-        this.phone = phone;
-        this.rating = rating;
-        this.subjects = subjects;
-        this.feedback = feedback;
-    }
-
-
-    public String getName() { return name; }
-    public String getEmail() { return email; }
-    public String getPhone() { return phone; }
-    public float getRating() { return rating; }
-    public String[] getSubjects() { return subjects; }
-    public String[] getFeedback() { return feedback; }
-}

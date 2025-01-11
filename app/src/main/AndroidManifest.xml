@@ -13,13 +13,25 @@
         android:theme="@style/Theme.LMS"
         tools:targetApi="31">
         <activity
+            android:name="Admin.Fee.FineList"
+            android:exported="false" />
+        <activity
+            android:name="Admin.Fee.TrackPayment"
+            android:exported="false" />
+        <activity
+            android:name="Admin.Fee.FeeDashboard"
+            android:exported="false" />
+        <activity
+            android:name="Shared.Attendance.AttendanceDashboard"
+            android:exported="false" />
+        <activity
+            android:name="Shared.Attendance.ViewAttendance"
+            android:exported="false" />
+        <activity
             android:name="Admin.addStudent"
             android:exported="false" />
         <activity
-            android:name="Attendance.ViewAttendance"
-            android:exported="false" />
-        <activity
-            android:name="Attendance.MarkAttendance"
+            android:name="Shared.Attendance.MarkAttendance"
             android:exported="false" />
         <activity
             android:name="Admin.Subjects.SingleSubjectVie"
@@ -52,7 +64,7 @@
             android:name="Shared.SharedList"
             android:exported="false" />
         <activity
-            android:name="Admin.AdminCampusView"
+            android:name="Admin.AdminDashboard"
             android:exported="false" />
         <activity
             android:name="Admin.admin_select_campus"

@@ -1,5 +1,4 @@
-package Attendance;
-
+package Shared.Attendance;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -8,15 +7,14 @@ import android.widget.CheckBox;
 import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
-
 import com.example.lms.R;
 
 import java.util.List;
 
 public class StudentAttendanceAdapter extends RecyclerView.Adapter<StudentAttendanceAdapter.ViewHolder> {
-    private List<StudentAttendance> studentList;
+    private List<Models.StudentAttendance> studentList;
 
-    public StudentAttendanceAdapter(List<StudentAttendance> studentList) {
+    public StudentAttendanceAdapter(List<Models.StudentAttendance> studentList) {
         this.studentList = studentList;
     }
 
@@ -30,8 +28,8 @@ public class StudentAttendanceAdapter extends RecyclerView.Adapter<StudentAttend
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-        StudentAttendance student = studentList.get(position);
-        holder.studentNameText.setText(student.getName());
+        Models.StudentAttendance student = studentList.get(position);
+        holder.studentNameText.setText(student.getStudentName());
         holder.attendanceCheckBox.setChecked(student.isPresent());
 
         holder.attendanceCheckBox.setOnCheckedChangeListener((buttonView, isChecked) -> {
@@ -44,11 +42,11 @@ public class StudentAttendanceAdapter extends RecyclerView.Adapter<StudentAttend
         return studentList.size();
     }
 
-    public List<StudentAttendance> getAttendanceList() {
+    public List<Models.StudentAttendance> getAttendanceList() {
         return studentList;
     }
 
-    public void updateStudentList(List<StudentAttendance> newList) {
+    public void updateStudentList(List<Models.StudentAttendance> newList) {
         this.studentList = newList;
         notifyDataSetChanged();
     }

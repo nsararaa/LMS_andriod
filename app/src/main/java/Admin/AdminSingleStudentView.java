@@ -31,7 +31,7 @@ public class AdminSingleStudentView extends AppCompatActivity {
         TextView attendanceText = findViewById(R.id.attendanceText);
         TextView resultsText = findViewById(R.id.resultsText);
         TextView finesText = findViewById(R.id.finesText);
-        ListView queryHistoryListView = findViewById(R.id.queryHistoryListView);
+
 
 
         //SETTERS FOR TV
@@ -45,12 +45,8 @@ public class AdminSingleStudentView extends AppCompatActivity {
         attendanceText.setText(getAttendanceHistory());
         resultsText.setText(getResultReports());
         finesText.setText(getFinesDues());
-        ArrayAdapter<String> queryAdapter = new ArrayAdapter<>(
-                this,
-                android.R.layout.simple_list_item_1,
-                getQueryHistory()
-        );
-        queryHistoryListView.setAdapter(queryAdapter);
+
+
     }
 
     @Override
@@ -61,7 +57,7 @@ public class AdminSingleStudentView extends AppCompatActivity {
 
 
 
-    // TODO: get from db
+    //  get from db TODO
     private String getPersonalDetails() {
         return "Name: John Doe\nID: 12345\nClass: X-A\nContact: +1234567890";
     }
@@ -82,11 +78,5 @@ public class AdminSingleStudentView extends AppCompatActivity {
         return "Library Fine: $10\nLab Fee Due: $50\nTotal Outstanding: $60";
     }
 
-    private String[] getQueryHistory() {
-        return new String[]{
-                "2024-01-01: Requested transcript",
-                "2024-01-15: Submitted leave application",
-                "2024-02-01: Asked for fee structure"
-        };
-    }
+
 }

@@ -41,13 +41,10 @@ public class addStudent extends AppCompatActivity {
         initializeViews();
         setupSubjectsDropdown();
         setupValidations();
-
-
     }
 
-
-
     private void setupSubjectsDropdown() {
+        // CALL TO DB TODO
         List<String> subjects = Arrays.asList(
                 "Introduction to Programming",
                 "Data Structures",
@@ -73,6 +70,7 @@ public class addStudent extends AppCompatActivity {
         });
     }
 
+    //TODO overlap of error and show password
 
     private void updateSubjectsDisplay() {
         StringBuilder display = new StringBuilder();
@@ -98,7 +96,7 @@ public class addStudent extends AppCompatActivity {
     }
 
     private void setupValidations() {
-        // Name validation
+        //NAME VALIDATIONS
         etStudentName.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {}
@@ -116,7 +114,7 @@ public class addStudent extends AppCompatActivity {
             public void afterTextChanged(Editable s) {}
         });
 
-        // Phone number validation
+        //PHONE # VALIDATIONS
         etPhoneNumber.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {}
@@ -132,7 +130,8 @@ public class addStudent extends AppCompatActivity {
             public void afterTextChanged(Editable s) {}
         });
 
-        // Password validation
+
+        //PASSWORD VALIDATIONS
         etPassword.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {}
@@ -152,7 +151,7 @@ public class addStudent extends AppCompatActivity {
             public void afterTextChanged(Editable s) {}
         });
 
-        // Year validation
+        //YEARVALIDATIONS
         etYear.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {}
@@ -250,12 +249,12 @@ public class addStudent extends AppCompatActivity {
     }
 
     private void saveStudent(Student student) {
-        // Show loading indicator
+        //loading indi
         ProgressDialog progressDialog = new ProgressDialog(this);
         progressDialog.setMessage("Adding student...");
         progressDialog.show();
 
-        // :TODO DATABASE CALL
+        // DATABASE CALL TODO
 //        saveStudentToDatabase(student, new DatabaseCallback() {
 //            @Override
 //            public void onSuccess() {
@@ -271,39 +270,21 @@ public class addStudent extends AppCompatActivity {
 //        });
     }
 
-//    private void showSuccessDialog() {
-//        new MaterialAlertDialogBuilder(this)
-//                .setTitle("Success")
-//                .setMessage("Student added successfully")
-//                .setPositiveButton("OK", (dialog, which) -> {
-//                    finish();
-//                })
-//                .show();
-//    }
-//
-//    private void showErrorDialog(String error) {
-//        new MaterialAlertDialogBuilder(this)
-//                .setTitle("Error")
-//                .setMessage("Failed to add student: " + error)
-//                .setPositiveButton("OK", null)
-//                .show();
-//    }
 
-    // Helper methods (implement these according to your needs)
     private int generateStudentID() {
-        // Implement your student ID generation logic
+        // DB CALL TODO
         return 0;
     }
 
     private String generateAbsenteeID() {
-        // Implement your absentee ID generation logic
+        //  DB CALL TODO
         return "";
     }
 
     private int getCampusId() {
-        // Return the current campus ID
+        // DB CALL TODO
         return 0;
     }
 }
 
-//CSV LOGIC:
+//TODO CSV LOGIC:
