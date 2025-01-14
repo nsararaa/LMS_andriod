@@ -3,6 +3,7 @@ package Shared;
 import android.content.Intent;
 import android.os.Bundle;
 import android.widget.ArrayAdapter;
+import android.widget.AutoCompleteTextView;
 import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
@@ -14,72 +15,122 @@ import com.google.android.material.textfield.TextInputEditText;
 import com.google.android.material.textfield.TextInputLayout;
 
 import Admin.admin_select_campus;
+import Student.StudentDashboard;
+//import Teacher.TeacherDashboard;
 
 public class shared_login extends AppCompatActivity {
+    private AutoCompleteTextView spinnerRole;
+    private TextInputLayout tilRole;
+    private TextInputLayout tilEmail;
+    private TextInputLayout tilPassword;
+    private TextInputEditText etEmail;
+    private TextInputEditText etPassword;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_shared_login);
         EdgeToEdge.enable(this);
 
-        // Initialize views with new IDs
-        TextInputLayout tilEmail = findViewById(R.id.tilEmail);
-        TextInputLayout tilPassword = findViewById(R.id.tilPassword);
-        TextInputEditText etEmail = findViewById(R.id.etEmail);
-        TextInputEditText etPassword = findViewById(R.id.etPassword);
+        // Initialize views
+        initializeViews();
+        setupRoleSpinner();
+        setupClickListeners();
+
+    }
+    void testFuncs(){
+        Intent intent = new Intent(this, Student.StudentDashboard.class);
+        startActivity(intent);
+   }
+
+    private void initializeViews() {
+        tilEmail = findViewById(R.id.tilEmail);
+        tilPassword = findViewById(R.id.tilPassword);
+        tilRole = findViewById(R.id.tilRole);
+        etEmail = findViewById(R.id.etEmail);
+        etPassword = findViewById(R.id.etPassword);
+        spinnerRole = findViewById(R.id.spinnerRole);
         MaterialButton btnLogin = findViewById(R.id.btnLogin);
         android.widget.TextView tvForgotPassword = findViewById(R.id.tvForgotPassword);
         android.widget.TextView tvSignUp = findViewById(R.id.tvSignUp);
 
-        // Set up forgot password click listener
+        // Set up click listeners
         tvForgotPassword.setOnClickListener(v ->
                 Toast.makeText(shared_login.this, "Contact administration", Toast.LENGTH_SHORT).show()
         );
 
-        // Set up sign up click listener
         tvSignUp.setOnClickListener(v ->
                 Toast.makeText(shared_login.this, "Contact administration to create an account", Toast.LENGTH_SHORT).show()
         );
 
-        // Set up login button click listener
-        btnLogin.setOnClickListener(v -> {
-            String email = etEmail.getText().toString().trim();
-            String password = etPassword.getText().toString().trim();
+        btnLogin.setOnClickListener(v -> handleLogin());
+    }
 
-            if (email.isEmpty()) {
-                tilEmail.setError("Email is required");
-                return;
-            } else {
-                tilEmail.setError(null);
-            }
+    private void setupRoleSpinner() {
+        String[] roles = new String[]{"Admin", "Teacher", "Student"};
+        ArrayAdapter<String> adapter = new ArrayAdapter<>(
+                this,
+                R.layout.dropdown_item,  // Create this layout with a simple TextView
+                roles
+        );
+        spinnerRole.setAdapter(adapter);
+    }
 
-            if (password.isEmpty()) {
-                tilPassword.setError("Password is required");
-                return;
-            } else {
-                tilPassword.setError(null);
-            }
+    private void setupClickListeners() {
+        // Any additional click listeners can be set up here
+    }
 
-            // Here you would typically implement your authentication logic
-            // For now, we'll just redirect to admin dashboard as an example
-            Intent adminIntent = new Intent(shared_login.this, admin_select_campus.class);
-            startActivity(adminIntent);
+    private void handleLogin() {
+        String email = etEmail.getText().toString().trim();
+        String password = etPassword.getText().toString().trim();
+        String selectedRole = spinnerRole.getText().toString();
 
-            // Uncomment and modify these sections when implementing other roles
-//            switch (userRole) {
-//                case "Instructor":
-//                    Intent instructorIntent = new Intent(shared_login.this, InstructorDashboard.class);
-//                    startActivity(instructorIntent);
-//                    break;
-//                case "Student":
-//                    Intent studentIntent = new Intent(shared_login.this, StudentDashboard.class);
-//                    startActivity(studentIntent);
-//                    break;
-//                default:
-//                    Toast.makeText(shared_login.this, "Invalid role", Toast.LENGTH_SHORT).show();
-//                    break;
-//            }
+        // Validate inputs
+        if (!validateInputs(email, password, selectedRole)) {
+            return;
+        }
 
-        });
+        // Handle login based on role
+        switch (selectedRole.toLowerCase()) {
+            case "admin":
+                startActivity(new Intent(shared_login.this, admin_select_campus.class));
+                break;
+            case "teacher":
+                //startActivity(new Intent(shared_login.this, TeacherDashboard.class));
+                break;
+            case "student":
+                startActivity(new Intent(shared_login.this, StudentDashboard.class));
+                break;
+            default:
+                Toast.makeText(this, "Please select a valid role", Toast.LENGTH_SHORT).show();
+                break;
+        }
+    }
+
+    private boolean validateInputs(String email, String password, String role) {
+        boolean isValid = true;
+
+        if (email.isEmpty()) {
+            tilEmail.setError("Email is required");
+            isValid = false;
+        } else {
+            tilEmail.setError(null);
+        }
+
+        if (password.isEmpty()) {
+            tilPassword.setError("Password is required");
+            isValid = false;
+        } else {
+            tilPassword.setError(null);
+        }
+
+        if (role.isEmpty()) {
+            tilRole.setError("Role selection is required");
+            isValid = false;
+        } else {
+            tilRole.setError(null);
+        }
+
+        return isValid;
     }
 }

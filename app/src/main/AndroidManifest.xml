@@ -13,6 +13,27 @@
         android:theme="@style/Theme.LMS"
         tools:targetApi="31">
         <activity
+            android:name="Teacher.Query.QueryList"
+            android:exported="false" />
+        <activity
+            android:name="Student.Query"
+            android:exported="false" />
+        <activity
+            android:name="Student.ViewAllAnnounc"
+            android:exported="false" />
+        <activity
+            android:name="Student.NotificationFragment"
+            android:exported="false" />
+        <activity
+            android:name="Student.CourseFragment"
+            android:exported="false" />
+        <activity
+            android:name="Student.ProfileFragment"
+            android:exported="false" />
+        <activity
+            android:name="Student.homeFragment"
+            android:exported="false" />
+        <activity
             android:name="Admin.Fee.FineList"
             android:exported="false" />
         <activity
@@ -40,22 +61,10 @@
             android:name="Admin.Subjects.SubjectDashboard"
             android:exported="false" />
         <activity
-            android:name="Admin.Subjects.SubjectItem"
-            android:exported="false" />
-        <activity
-            android:name="Admin.Subjects.SubjectAndCurri"
-            android:exported="false" />
-        <activity
-            android:name="Admin.SubjectIteam"
-            android:exported="false" />
-        <activity
-            android:name="Admin.SubjectAndCurriculum"
+            android:name="Student.StudentDashboard"
             android:exported="false" />
         <activity
             android:name="Admin.AdminTeacherView"
-            android:exported="false" />
-        <activity
-            android:name="Admin.TeacherList"
             android:exported="false" />
         <activity
             android:name="Admin.AdminSingleStudentView"
