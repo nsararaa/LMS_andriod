@@ -1,5 +1,6 @@
 package Shared;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.activity.EdgeToEdge;
@@ -50,7 +51,13 @@ public class SubjectView extends AppCompatActivity {
     }
 
     private void loadSubjectData() {
-        // Example of creating a subject using the builder pattern
+        // DB call todo
+
+        Intent i = getIntent();
+        String subjectName = i.getStringExtra("SubjectName");
+
+
+        //DUMMY DATA: REMOVE
         Subject subject = new Subject.SubjectBuilder("Mathematics")
                 .subjectId(1001)
                 .day("Monday")
@@ -63,9 +70,8 @@ public class SubjectView extends AppCompatActivity {
         updateSubject(subject);
     }
 
-    // Method to update UI with a new subject
+    //update UI
     public void updateSubject(Subject subject) {
-        // Format the time
         SimpleDateFormat timeFormat = new SimpleDateFormat("HH:mm", Locale.getDefault());
 
         subjectName.setText(subject.getSubjectName());

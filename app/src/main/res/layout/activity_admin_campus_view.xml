@@ -8,28 +8,61 @@
     android:layout_height="match_parent"
     android:background="@color/background_primary">
 
+    <!-- Toolbar -->
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="@color/background_secondary"
+        android:layout_alignParentTop="true"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
+
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:fillViewport="true"
-        android:background="@color/background_primary">
+        android:background="@color/background_primary"
+        android:overScrollMode="never"
+        app:layout_constraintTop_toBottomOf="@id/toolbar"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:padding="24dp">
+            android:padding="16dp">
 
-            <TextView
-                android:id="@+id/header"
-                android:layout_width="wrap_content"
+            <!-- Enhanced Header Section -->
+            <LinearLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="School Management"
-                android:textSize="36sp"
-                android:textStyle="bold"
-                android:textColor="@color/text_secondary"
-                android:layout_gravity="center"
-                android:paddingBottom="32dp" />
+                android:orientation="vertical"
+                android:layout_marginBottom="24dp">
+
+                <TextView
+                    android:id="@+id/header"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="School Management"
+                    android:textSize="32sp"
+                    android:textStyle="bold"
+                    android:textColor="@color/text_secondary"
+                    android:layout_gravity="start"
+                    android:letterSpacing="0.02"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Welcome back, Admin"
+                    android:textSize="16sp"
+                    android:textColor="@color/text_secondary"
+                    android:alpha="0.7"
+                    android:layout_marginTop="4dp"/>
+            </LinearLayout>
 
             <GridLayout
                 android:id="@+id/management_grid"
@@ -39,79 +72,100 @@
                 android:rowCount="4"
                 android:layout_gravity="center"
                 android:useDefaultMargins="true"
-                android:alignmentMode="alignMargins"
-                android:background="@android:color/transparent">
+                android:alignmentMode="alignMargins">
 
-                <!-- Student Management -->
+                <!-- Student Management Card -->
                 <androidx.cardview.widget.CardView
                     android:id="@+id/student_management_card"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_columnWeight="1"
-                    android:layout_margin="12dp"
+                    android:layout_margin="8dp"
                     app:cardBackgroundColor="@color/background_secondary"
-                    app:cardCornerRadius="16dp"
-                    app:cardElevation="8dp">
+                    app:cardCornerRadius="20dp"
+                    app:cardElevation="4dp"
+                    android:foreground="?android:attr/selectableItemBackground"
+                    android:clickable="true"
+                    android:focusable="true">
 
                     <LinearLayout
                         android:layout_width="match_parent"
-                        android:layout_height="140dp"
+                        android:layout_height="150dp"
                         android:orientation="vertical"
                         android:gravity="center"
                         android:padding="16dp">
-                        <!--android:src="@drawable/ic_student" -->
-                        <ImageView
-                            android:layout_width="60dp"
-                            android:layout_height="60dp"
-                          android:src="@drawable/student_management"
-                            />
+                        <androidx.cardview.widget.CardView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            app:cardCornerRadius="24dp"
+                            app:cardBackgroundColor="@color/icon_background"
+                            app:cardElevation="0dp">
+
+                            <ImageView
+                                android:layout_width="48dp"
+                                android:layout_height="48dp"
+                                android:src="@drawable/student_management"
+                                app:tint="@color/icon_tint"
+                                android:padding="12dp"/>
+                        </androidx.cardview.widget.CardView>
 
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Student Management"
+                            android:text="Student\nManagement"
                             android:textColor="@color/text_primary"
                             android:textSize="16sp"
-
-                            android:layout_marginTop="8dp"
-                            android:gravity="center"/>
+                            android:textStyle="bold"
+                            android:layout_marginTop="12dp"
+                            android:gravity="center"
+                            android:lineSpacingExtra="4dp"/>
                     </LinearLayout>
                 </androidx.cardview.widget.CardView>
 
-
-                <!-- Student Management -->
                 <androidx.cardview.widget.CardView
                     android:id="@+id/teacher_management_card"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_columnWeight="1"
-                    android:layout_margin="12dp"
+                    android:layout_margin="8dp"
                     app:cardBackgroundColor="@color/background_secondary"
-                    app:cardCornerRadius="16dp"
-                    app:cardElevation="8dp">
+                    app:cardCornerRadius="20dp"
+                    app:cardElevation="4dp"
+                    android:foreground="?android:attr/selectableItemBackground"
+                    android:clickable="true"
+                    android:focusable="true">
 
                     <LinearLayout
                         android:layout_width="match_parent"
-                        android:layout_height="140dp"
+                        android:layout_height="150dp"
                         android:orientation="vertical"
                         android:gravity="center"
                         android:padding="16dp">
+                        <androidx.cardview.widget.CardView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            app:cardCornerRadius="24dp"
+                            app:cardBackgroundColor="@color/icon_background"
+                            app:cardElevation="0dp">
 
-                        <ImageView
-                            android:layout_width="60dp"
-                            android:layout_height="60dp"
-                            android:src="@drawable/teacher_management"
-                            />
+                            <ImageView
+                                android:layout_width="48dp"
+                                android:layout_height="48dp"
+                                android:src="@drawable/teacher_management"
+                                app:tint="@color/icon_tint"
+                                android:padding="12dp"/>
+                        </androidx.cardview.widget.CardView>
 
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Teacher Management"
+                            android:text="Teacher\nManagement"
                             android:textColor="@color/text_primary"
                             android:textSize="16sp"
-
-                            android:layout_marginTop="8dp"
-                            android:gravity="center"/>
+                            android:textStyle="bold"
+                            android:layout_marginTop="12dp"
+                            android:gravity="center"
+                            android:lineSpacingExtra="4dp"/>
                     </LinearLayout>
                 </androidx.cardview.widget.CardView>
                 <androidx.cardview.widget.CardView
@@ -119,178 +173,233 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_columnWeight="1"
-                    android:layout_margin="12dp"
+                    android:layout_margin="8dp"
                     app:cardBackgroundColor="@color/background_secondary"
-                    app:cardCornerRadius="16dp"
-                    app:cardElevation="8dp">
+                    app:cardCornerRadius="20dp"
+                    app:cardElevation="4dp"
+                    android:foreground="?android:attr/selectableItemBackground"
+                    android:clickable="true"
+                    android:focusable="true">
 
                     <LinearLayout
                         android:layout_width="match_parent"
-                        android:layout_height="140dp"
+                        android:layout_height="150dp"
                         android:orientation="vertical"
                         android:gravity="center"
                         android:padding="16dp">
+                        <androidx.cardview.widget.CardView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            app:cardCornerRadius="24dp"
+                            app:cardBackgroundColor="@color/icon_background"
+                            app:cardElevation="0dp">
 
-                        <ImageView
-                            android:layout_width="60dp"
-                            android:layout_height="60dp"
-                            android:src="@drawable/subject_management"
-                            />
+                            <ImageView
+                                android:layout_width="48dp"
+                                android:layout_height="48dp"
+                                android:src="@drawable/subject_management"
+                                app:tint="@color/icon_tint"
+                                android:padding="12dp"/>
+                        </androidx.cardview.widget.CardView>
 
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Subject Management"
+                            android:text="Subject\nManagement"
                             android:textColor="@color/text_primary"
                             android:textSize="16sp"
-
-                            android:layout_marginTop="8dp"
-                            android:gravity="center"/>
+                            android:textStyle="bold"
+                            android:layout_marginTop="12dp"
+                            android:gravity="center"
+                            android:lineSpacingExtra="4dp"/>
                     </LinearLayout>
                 </androidx.cardview.widget.CardView>
-
                 <androidx.cardview.widget.CardView
                     android:id="@+id/attendance_management_card"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_columnWeight="1"
-                    android:layout_margin="12dp"
+                    android:layout_margin="8dp"
                     app:cardBackgroundColor="@color/background_secondary"
-                    app:cardCornerRadius="16dp"
-                    app:cardElevation="8dp">
+                    app:cardCornerRadius="20dp"
+                    app:cardElevation="4dp"
+                    android:foreground="?android:attr/selectableItemBackground"
+                    android:clickable="true"
+                    android:focusable="true">
 
                     <LinearLayout
                         android:layout_width="match_parent"
-                        android:layout_height="140dp"
+                        android:layout_height="150dp"
                         android:orientation="vertical"
                         android:gravity="center"
                         android:padding="16dp">
+                        <androidx.cardview.widget.CardView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            app:cardCornerRadius="24dp"
+                            app:cardBackgroundColor="@color/icon_background"
+                            app:cardElevation="0dp">
 
-                        <ImageView
-                            android:layout_width="60dp"
-                            android:layout_height="60dp"
-                            android:src="@drawable/attendance_management"
-                            />
+                            <ImageView
+                                android:layout_width="48dp"
+                                android:layout_height="48dp"
+                                android:src="@drawable/attendance_management"
+                                app:tint="@color/icon_tint"
+                                android:padding="12dp"/>
+                        </androidx.cardview.widget.CardView>
 
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Attendance Management"
+                            android:text="Attendance\nManagement"
                             android:textColor="@color/text_primary"
                             android:textSize="16sp"
-
-                            android:layout_marginTop="8dp"
-                            android:gravity="center"/>
+                            android:textStyle="bold"
+                            android:layout_marginTop="12dp"
+                            android:gravity="center"
+                            android:lineSpacingExtra="4dp"/>
                     </LinearLayout>
                 </androidx.cardview.widget.CardView>
-
                 <androidx.cardview.widget.CardView
                     android:id="@+id/result_management_card"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_columnWeight="1"
-                    android:layout_margin="12dp"
+                    android:layout_margin="8dp"
                     app:cardBackgroundColor="@color/background_secondary"
-                    app:cardCornerRadius="16dp"
-                    app:cardElevation="8dp">
+                    app:cardCornerRadius="20dp"
+                    app:cardElevation="4dp"
+                    android:foreground="?android:attr/selectableItemBackground"
+                    android:clickable="true"
+                    android:focusable="true">
 
                     <LinearLayout
                         android:layout_width="match_parent"
-                        android:layout_height="140dp"
+                        android:layout_height="150dp"
                         android:orientation="vertical"
                         android:gravity="center"
                         android:padding="16dp">
+                        <androidx.cardview.widget.CardView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            app:cardCornerRadius="24dp"
+                            app:cardBackgroundColor="@color/icon_background"
+                            app:cardElevation="0dp">
 
-                        <ImageView
-                            android:layout_width="60dp"
-                            android:layout_height="60dp"
-                            android:src="@drawable/result_management"
-                            />
+                            <ImageView
+                                android:layout_width="48dp"
+                                android:layout_height="48dp"
+                                android:src="@drawable/result_management"
+                                app:tint="@color/icon_tint"
+                                android:padding="12dp"/>
+                        </androidx.cardview.widget.CardView>
 
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Result Management"
+                            android:text="Result\nManagement"
                             android:textColor="@color/text_primary"
                             android:textSize="16sp"
-
-                            android:layout_marginTop="8dp"
-                            android:gravity="center"/>
+                            android:textStyle="bold"
+                            android:layout_marginTop="12dp"
+                            android:gravity="center"
+                            android:lineSpacingExtra="4dp"/>
                     </LinearLayout>
                 </androidx.cardview.widget.CardView>
-
                 <androidx.cardview.widget.CardView
                     android:id="@+id/fee_management_card"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_columnWeight="1"
-                    android:layout_margin="12dp"
+                    android:layout_margin="8dp"
                     app:cardBackgroundColor="@color/background_secondary"
-                    app:cardCornerRadius="16dp"
-                    app:cardElevation="8dp">
+                    app:cardCornerRadius="20dp"
+                    app:cardElevation="4dp"
+                    android:foreground="?android:attr/selectableItemBackground"
+                    android:clickable="true"
+                    android:focusable="true">
 
                     <LinearLayout
                         android:layout_width="match_parent"
-                        android:layout_height="140dp"
+                        android:layout_height="150dp"
                         android:orientation="vertical"
                         android:gravity="center"
                         android:padding="16dp">
+                        <androidx.cardview.widget.CardView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            app:cardCornerRadius="24dp"
+                            app:cardBackgroundColor="@color/icon_background"
+                            app:cardElevation="0dp">
 
-                        <ImageView
-                            android:layout_width="60dp"
-                            android:layout_height="60dp"
-                            android:src="@drawable/fee_management"
-                            />
+                            <ImageView
+                                android:layout_width="48dp"
+                                android:layout_height="48dp"
+                                android:src="@drawable/fee_management"
+                                app:tint="@color/icon_tint"
+                                android:padding="12dp"/>
+                        </androidx.cardview.widget.CardView>
+
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Fee Management"
+                            android:text="Fee\nManagement"
                             android:textColor="@color/text_primary"
                             android:textSize="16sp"
-
-                            android:layout_marginTop="8dp"
-                            android:gravity="center"/>
+                            android:textStyle="bold"
+                            android:layout_marginTop="12dp"
+                            android:gravity="center"
+                            android:lineSpacingExtra="4dp"/>
                     </LinearLayout>
                 </androidx.cardview.widget.CardView>
-
                 <androidx.cardview.widget.CardView
                     android:id="@+id/alumni_management_card"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_columnWeight="1"
-                    android:layout_margin="12dp"
+                    android:layout_margin="8dp"
                     app:cardBackgroundColor="@color/background_secondary"
-                    app:cardCornerRadius="16dp"
-                    app:cardElevation="8dp">
+                    app:cardCornerRadius="20dp"
+                    app:cardElevation="4dp"
+                    android:foreground="?android:attr/selectableItemBackground"
+                    android:clickable="true"
+                    android:focusable="true">
 
                     <LinearLayout
                         android:layout_width="match_parent"
-                        android:layout_height="140dp"
+                        android:layout_height="150dp"
                         android:orientation="vertical"
                         android:gravity="center"
                         android:padding="16dp">
+                        <androidx.cardview.widget.CardView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            app:cardCornerRadius="24dp"
+                            app:cardBackgroundColor="@color/icon_background"
+                            app:cardElevation="0dp">
 
-                        <ImageView
-                            android:layout_width="60dp"
-                            android:layout_height="60dp"
-                            android:src="@drawable/alumni_management"
-                            />
+                            <ImageView
+                                android:layout_width="48dp"
+                                android:layout_height="48dp"
+                                android:src="@drawable/alumni_management"
+                                app:tint="@color/icon_tint"
+                                android:padding="12dp"/>
+                        </androidx.cardview.widget.CardView>
+
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Alumni Management"
+                            android:text="Alumni\nManagement"
                             android:textColor="@color/text_primary"
                             android:textSize="16sp"
-
-                            android:layout_marginTop="8dp"
-                            android:gravity="center"/>
+                            android:textStyle="bold"
+                            android:layout_marginTop="12dp"
+                            android:gravity="center"
+                            android:lineSpacingExtra="4dp"/>
                     </LinearLayout>
                 </androidx.cardview.widget.CardView>
-
-                <!-- Continue the same pattern for remaining cards -->
 
             </GridLayout>
         </LinearLayout>
     </ScrollView>
-
 </androidx.constraintlayout.widget.ConstraintLayout>

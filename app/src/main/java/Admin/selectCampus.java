@@ -6,8 +6,6 @@ import android.graphics.Typeface;
 import android.os.Bundle;
 import android.util.TypedValue;
 import android.view.Gravity;
-import android.view.View;
-import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -15,21 +13,16 @@ import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
 import com.example.lms.R;
 import com.google.android.material.card.MaterialCardView;
-import com.google.android.material.imageview.ShapeableImageView;
-import com.google.android.material.shape.ShapeAppearanceModel;
 
 import java.util.Arrays;
 import java.util.List;
 
 
-public class admin_select_campus extends AppCompatActivity {
+public class selectCampus extends AppCompatActivity {
 
-    String[] getCampusNames() {
-        String[] campuses = new String[]{"JT", "OPF", "1A1", "Paragon"};
-        return campuses;
+    String getLocation(){
+        return "Main Academic Block";
     }
-    private String[] campuses = getCampusNames();
-
     private void createCampusCards(List<String> campuses) {
         LinearLayout buttonContainer = findViewById(R.id.campusButtonContainer);
 
@@ -100,7 +93,7 @@ public class admin_select_campus extends AppCompatActivity {
             );
             locationParams.topMargin = dpToPx(4);
             location.setLayoutParams(locationParams);
-            location.setText("Main Academic Block");
+            location.setText(getLocation());
             location.setTextSize(TypedValue.COMPLEX_UNIT_SP, 14);
             location.setTextColor(getColor(R.color.text_secondary));
 
@@ -129,7 +122,7 @@ public class admin_select_campus extends AppCompatActivity {
 
             // click listeners
             cardView.setOnClickListener(v -> {
-                Intent intent = new Intent(admin_select_campus.this, AdminDashboard.class);
+                Intent intent = new Intent(selectCampus.this, AdminDashboard.class);
                 intent.putExtra("campusName", campus);
                 startActivity(intent);
             });

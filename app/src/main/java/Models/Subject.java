@@ -7,11 +7,26 @@ public class Subject {
     private int subjectId;
     private String subjectName;
     private String day;
-    private Calendar time;  // Changed from LocalTime to Calendar
+    private Calendar time;  // Using Calendar for time representation
     private int teacherId;
     private int campusId;
     private int year;
+    private String name; // Added to store teacher name
+    private int studentCount; // Added to track the number of students
 
+    public Subject(String subjectName, String name, int studentCount) {
+        this.subjectName = subjectName;
+        this.name = name;
+        this.studentCount = studentCount;
+
+        // Default values for optional fields
+        this.subjectId = 0;
+        this.day = null;
+        this.time = null;
+        this.teacherId = 0;
+        this.campusId = 0;
+        this.year = 0;
+    }
     private Subject(SubjectBuilder builder) {
         this.subjectId = builder.subjectId;
         this.subjectName = builder.subjectName;
@@ -20,16 +35,20 @@ public class Subject {
         this.teacherId = builder.teacherId;
         this.campusId = builder.campusId;
         this.year = builder.year;
+        this.name = builder.name;
+        this.studentCount = builder.studentCount;
     }
 
     public static class SubjectBuilder {
         private int subjectId;
         private String subjectName;
         private String day;
-        private Calendar time;  // Changed from LocalTime to Calendar
+        private Calendar time;  // Using Calendar for time representation
         private int teacherId;
         private int campusId;
         private int year;
+        private String name;
+        private int studentCount; // Added to track the number of students
 
         public SubjectBuilder(String subjectName) {
             this.subjectName = subjectName;
@@ -40,12 +59,19 @@ public class Subject {
             return this;
         }
 
+
+        public SubjectBuilder name(String name) {
+            this.name = name;
+            return this;
+        }
+
         public SubjectBuilder day(String day) {
             this.day = day;
             return this;
         }
 
-        public SubjectBuilder time(int hourOfDay, int minute) {  // Modified to accept hour and minute
+
+        public SubjectBuilder time(int hourOfDay, int minute) {
             Calendar calendar = Calendar.getInstance();
             calendar.set(Calendar.HOUR_OF_DAY, hourOfDay);
             calendar.set(Calendar.MINUTE, minute);
@@ -68,17 +94,50 @@ public class Subject {
             return this;
         }
 
+        public SubjectBuilder studentCount(int studentCount) {
+            this.studentCount = studentCount;
+            return this;
+        }
+
         public Subject build() {
             return new Subject(this);
         }
     }
 
     // Getters
-    public int getSubjectId() { return subjectId; }
-    public String getSubjectName() { return subjectName; }
-    public String getDay() { return day; }
-    public Calendar getTime() { return time; }
-    public int getTeacherId() { return teacherId; }
-    public int getCampusId() { return campusId; }
-    public int getYear() { return year; }
+    public int getSubjectId() {
+        return subjectId;
+    }
+
+    public String getSubjectName() {
+        return subjectName;
+    }
+
+    public String getDay() {
+        return day;
+    }
+
+    public Calendar getTime() {
+        return time;
+    }
+
+    public int getTeacherId() {
+        return teacherId;
+    }
+
+    public int getCampusId() {
+        return campusId;
+    }
+
+    public int getYear() {
+        return year;
+    }
+
+    public String getTeacherName() {
+        return name;
+    }
+
+    public int getStudentCount() {
+        return studentCount;
+    }
 }

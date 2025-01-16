@@ -18,6 +18,7 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import java.util.ArrayList;
 import java.util.List;
 
+import Models.Subject;
 public class SubjectDashboard extends AppCompatActivity {
     private RecyclerView subjectsRecyclerView;
     private SubjectsAdapter subjectsAdapter;
@@ -58,12 +59,12 @@ public class SubjectDashboard extends AppCompatActivity {
     // :TODO ADD ACTUAL DATA
     private void getData() {
         List<Subject> dummySubjects = new ArrayList<>();
-        dummySubjects.add(new Subject("Mathematics", "John Doe", 30));
-        dummySubjects.add(new Subject("Physics", "Jane Smith", 25));
-        dummySubjects.add(new Subject("Chemistry", "Robert Johnson", 28));
-        dummySubjects.add(new Subject("Biology", "Emily Davis", 35));
-        dummySubjects.add(new Subject("History", "Michael Brown", 20));
-        dummySubjects.add(new Subject("Geography", "Sarah Wilson", 18));
+        dummySubjects.add(new Subject("Mathematics", "S", 30));
+        dummySubjects.add(new Subject("Physics", "N", 25));
+        dummySubjects.add(new Subject("Chemistry", "M", 28));
+        dummySubjects.add(new Subject("Biology", "Z", 35));
+        dummySubjects.add(new Subject("History", "K", 20));
+        dummySubjects.add(new Subject("Geography", "L", 18));
 
 
         subjectsAdapter.setSubjects(dummySubjects);
@@ -110,33 +111,10 @@ class SubjectsAdapter extends RecyclerView.Adapter<SubjectsAdapter.SubjectViewHo
         }
 
         void bind(Subject subject) {
-            subjectNameText.setText(subject.getName());
+            subjectNameText.setText(subject.getTeacherName());
             teacherNameText.setText("Teacher: " + subject.getTeacherName());
             studentCountText.setText(subject.getStudentCount() + " Students");
         }
     }
 }
 
-class Subject {
-    private String name;
-    private String teacherName;
-    private int studentCount;
-
-    public Subject(String name, String teacherName, int studentCount) {
-        this.name = name;
-        this.teacherName = teacherName;
-        this.studentCount = studentCount;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public String getTeacherName() {
-        return teacherName;
-    }
-
-    public int getStudentCount() {
-        return studentCount;
-    }
-}

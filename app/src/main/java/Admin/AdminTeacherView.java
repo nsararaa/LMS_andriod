@@ -1,5 +1,8 @@
 package Admin;
 
+
+//TODO NOT WOKRING
+import android.content.Intent;
 import android.os.Bundle;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -17,6 +20,7 @@ import com.example.lms.R;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import Models.Teacher;
+
 public class AdminTeacherView extends AppCompatActivity {
     private TextView teacherName, teacherEmail, teacherPhone;
     private ListView subjectsList, feedbackList;
@@ -46,7 +50,7 @@ public class AdminTeacherView extends AppCompatActivity {
         subjectsList = findViewById(R.id.subjectsList);
         feedbackList = findViewById(R.id.feedbackList);
         teacherRating = findViewById(R.id.teacherRating);
-        viewStudentsButton = findViewById(R.id.viewStudentsButton);
+
 
 
     }
@@ -98,6 +102,12 @@ public class AdminTeacherView extends AppCompatActivity {
 
     private void showSubjectDetails(String subject) {
         // TODO chnage intent?
+        Intent i = new Intent(AdminTeacherView.this, Shared.SubjectView.class);
+        i.putExtra("SubjectName", subject);
+        startActivity(i);
+
+
+
     }
 }
 

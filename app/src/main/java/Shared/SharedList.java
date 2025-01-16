@@ -17,6 +17,7 @@ import com.example.lms.R;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.textfield.TextInputEditText;
 
+import Admin.AddTeacher;
 import Admin.AdminSingleStudentView;
 import Admin.AdminTeacherView;
 import Admin.addStudent;
@@ -72,10 +73,10 @@ public class SharedList extends AppCompatActivity {
         // Populate names based on the type
         if (TYPE_STUDENTS.equals(type)) {
             allNames = getStudentNames();
-            header.setText("Student's");
+            header.setText("Student's Dashboard");
         } else if (TYPE_TEACHERS.equals(type)) {
             allNames = getTeacherNames();
-            header.setText("Teacher's");
+            header.setText("Teacher's Dashboard");
         } else {
             allNames = new String[0]; // empty if invalid type
         }
@@ -89,8 +90,8 @@ public class SharedList extends AppCompatActivity {
                 Intent i = new Intent(SharedList.this, addStudent.class);
                 startActivity(i);
             } else if (TYPE_TEACHERS.equals(type)) {
-//                Intent i = new Intent(SharedList.this, addTeacher.class);
-//                startActivity(i);
+                Intent i = new Intent(SharedList.this, AddTeacher.class);
+                startActivity(i);
             }
 
         });

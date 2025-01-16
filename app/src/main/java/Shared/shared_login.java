@@ -14,11 +14,10 @@ import com.google.android.material.button.MaterialButton;
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.android.material.textfield.TextInputLayout;
 
-import Admin.admin_select_campus;
+import Admin.selectCampus;
 import Instructor.InstructorDashboard;
 import Instructor.TeacherDashboard;
 import Student.StudentDashboard;
-import Instructor.QueryList;
 
 public class shared_login extends AppCompatActivity {
     private AutoCompleteTextView spinnerRole;
@@ -97,7 +96,7 @@ public class shared_login extends AppCompatActivity {
         // Handle login based on role
         switch (selectedRole.toLowerCase()) {
             case "admin":
-                startActivity(new Intent(shared_login.this, admin_select_campus.class));
+                startActivity(new Intent(shared_login.this, selectCampus.class));
                 break;
             case "teacher":
                 startActivity(new Intent(shared_login.this, TeacherDashboard.class));

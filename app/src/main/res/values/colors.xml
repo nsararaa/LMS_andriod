@@ -9,6 +9,10 @@
     <color name="accent_color">#4F46E5</color>
     <color name="accent_color_variant">#6366F1</color>
 
+
+    <color name="icon_background">#F5F5F5</color>
+    <color name="icon_tint">@color/primary_color</color>
+
     <!-- Background Colors  -->
     <color name="background_primary">#0F172A</color>
     <color name="background_secondary">#1E293B</color>
