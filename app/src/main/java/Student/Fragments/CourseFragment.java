@@ -1,4 +1,4 @@
-package Student;
+package Student.Fragments;
 
 import android.content.Context;
 import android.content.Intent;
@@ -18,24 +18,26 @@ import androidx.fragment.app.Fragment;
 
 import com.example.lms.R;
 
+import Shared.SubjectView;
+
 public class CourseFragment extends Fragment {
 
     public String[][] getCourseDetails() {
         String[][] courseDetails;
 
-            courseDetails = new String[][]{
-                    {"OOP", "Object-Oriented\nProgramming"},
-                    {"Probability", "Statistics &\nProbability"}
-            };
+        courseDetails = new String[][]{
+                {"OOP", "Object-Oriented\nProgramming"},
+                {"Probability", "Statistics &\nProbability"}
+        };
 
-            return courseDetails;
+        return courseDetails;
 
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View rootView = inflater.inflate(R.layout.activity_course_fragment, container, false);
+        View rootView = inflater.inflate(R.layout.fragment_course_stu, container, false);
 
 
         String[][] courseDetails = getCourseDetails();
@@ -80,14 +82,14 @@ public class CourseFragment extends Fragment {
             button.setClickable(true);
             button.setFocusable(true);
 
-            // Set onClick listener for buttons
+
             button.setOnClickListener(v -> {
                 Intent intent;
 
-                //intent = new Intent(context, SubjectView.class);
+                intent = new Intent(context, SubjectView.class);
 
-//                intent.putExtra("course_title", course[0]);
-//                startActivity(intent);
+                intent.putExtra("course_title", course[0]);
+                startActivity(intent);
             });
 
             gridLayout.addView(button);
@@ -96,3 +98,5 @@ public class CourseFragment extends Fragment {
         return rootView;
     }
 }
+
+

@@ -9,7 +9,7 @@
     <color name="accent_color">#4F46E5</color>
     <color name="accent_color_variant">#6366F1</color>
 
-    <!-- Background Colors -->
+    <!-- Background Colors  -->
     <color name="background_primary">#0F172A</color>
     <color name="background_secondary">#1E293B</color>
     <color name="background_tertiary">#334155</color>

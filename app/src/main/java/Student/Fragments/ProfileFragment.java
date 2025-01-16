@@ -1,4 +1,4 @@
-package Student;
+package Student.Fragments;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -13,6 +13,7 @@ public class ProfileFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.activity_profile_fragment, container, false);
+        return inflater.inflate(R.layout.fragment_profile_stu, container, false);
     }
 }
+

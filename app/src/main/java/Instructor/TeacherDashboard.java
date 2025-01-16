@@ -1,21 +1,23 @@
-package Student;
+package Instructor;
 
 import android.os.Bundle;
-
-import androidx.appcompat.app.AppCompatActivity;
-
-import com.example.lms.R;
-
-import androidx.appcompat.widget.Toolbar;
-import androidx.viewpager.widget.ViewPager;
-
 import android.widget.Toast;
 
+import androidx.activity.EdgeToEdge;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
+import androidx.core.graphics.Insets;
+import androidx.core.view.ViewCompat;
+import androidx.core.view.WindowInsetsCompat;
+import androidx.viewpager.widget.ViewPager;
+
+import com.example.lms.R;
 import com.google.android.material.tabs.TabLayout;
 
-import Student.Fragments.FragmentAdapter;
+import Instructor.Fragments.FragmentAdapter;
 
-public class StudentDashboard extends AppCompatActivity {
+public class TeacherDashboard extends AppCompatActivity {
+
     private Toolbar toolbar;
     private TabLayout tabLayout;
     private ViewPager viewPager;
@@ -24,13 +26,13 @@ public class StudentDashboard extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_student_dashboard);
+        setContentView(R.layout.activity_instructor_dashboard);
 
         initViews();
         // Setup ViewPager and TabLayout
         setupViewPager();
         // Setup tabs with icons
-       setupTabs();
+        setupTabs();
     }
 
     private void initViews() {
@@ -39,7 +41,7 @@ public class StudentDashboard extends AppCompatActivity {
 
         // Set the title for the toolbar
         if (getSupportActionBar() != null) {
-            getSupportActionBar().setTitle("Student Dashboard");
+            getSupportActionBar().setTitle("Teacher Dashboard");
         }
 
         tabLayout = findViewById(R.id.tab_layout);
@@ -108,4 +110,3 @@ public class StudentDashboard extends AppCompatActivity {
         backPressTime = System.currentTimeMillis();
     }
 }
-

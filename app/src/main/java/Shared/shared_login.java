@@ -15,8 +15,10 @@ import com.google.android.material.textfield.TextInputEditText;
 import com.google.android.material.textfield.TextInputLayout;
 
 import Admin.admin_select_campus;
+import Instructor.InstructorDashboard;
+import Instructor.TeacherDashboard;
 import Student.StudentDashboard;
-//import Teacher.TeacherDashboard;
+import Instructor.QueryList;
 
 public class shared_login extends AppCompatActivity {
     private AutoCompleteTextView spinnerRole;
@@ -37,9 +39,11 @@ public class shared_login extends AppCompatActivity {
         setupRoleSpinner();
         setupClickListeners();
 
+//        testFuncs();
+
     }
     void testFuncs(){
-        Intent intent = new Intent(this, Student.StudentDashboard.class);
+        Intent intent = new Intent(this, InstructorDashboard.class);
         startActivity(intent);
    }
 
@@ -96,7 +100,7 @@ public class shared_login extends AppCompatActivity {
                 startActivity(new Intent(shared_login.this, admin_select_campus.class));
                 break;
             case "teacher":
-                //startActivity(new Intent(shared_login.this, TeacherDashboard.class));
+                startActivity(new Intent(shared_login.this, TeacherDashboard.class));
                 break;
             case "student":
                 startActivity(new Intent(shared_login.this, StudentDashboard.class));

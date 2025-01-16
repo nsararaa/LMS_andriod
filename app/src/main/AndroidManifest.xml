@@ -13,7 +13,28 @@
         android:theme="@style/Theme.LMS"
         tools:targetApi="31">
         <activity
-            android:name="Teacher.Query.QueryList"
+            android:name="Shared.SubjectView"
+            android:exported="false" />
+        <activity
+            android:name="Instructor.SingleSubject"
+            android:exported="false" />
+        <activity
+            android:name="Instructor.InstructorDashboard"
+            android:exported="false" />
+        <activity
+            android:name="Instructor.CreateAssignment"
+            android:exported="false" />
+        <activity
+            android:name="Instructor.ListSubjects"
+            android:exported="false" />
+        <activity
+            android:name="Instructor.QueryResponse"
+            android:exported="false" />
+        <activity
+            android:name="Instructor.TeacherDashboard"
+            android:exported="false" />
+        <activity
+            android:name="Instructor.QueryList"
             android:exported="false" />
         <activity
             android:name="Student.Query"
@@ -22,16 +43,16 @@
             android:name="Student.ViewAllAnnounc"
             android:exported="false" />
         <activity
-            android:name="Student.NotificationFragment"
+            android:name="Student.Fragments.NotificationFragment"
             android:exported="false" />
         <activity
-            android:name="Student.CourseFragment"
+            android:name="Student.Fragments.CourseFragment"
             android:exported="false" />
         <activity
-            android:name="Student.ProfileFragment"
+            android:name="Student.Fragments.ProfileFragment"
             android:exported="false" />
         <activity
-            android:name="Student.homeFragment"
+            android:name="Student.Fragments.homeFragment"
             android:exported="false" />
         <activity
             android:name="Admin.Fee.FineList"

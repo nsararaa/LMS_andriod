@@ -1,46 +1,52 @@
-package Student;
+package Instructor;
 
 import android.os.Bundle;
-
-import androidx.appcompat.app.AppCompatActivity;
-
-import com.example.lms.R;
-
-import androidx.appcompat.widget.Toolbar;
-import androidx.viewpager.widget.ViewPager;
-
 import android.widget.Toast;
 
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
+import androidx.cardview.widget.CardView;
+import androidx.viewpager.widget.ViewPager;
+
+import com.example.lms.R;
 import com.google.android.material.tabs.TabLayout;
 
-import Student.Fragments.FragmentAdapter;
+import Instructor.Fragments.FragmentAdapter;
 
-public class StudentDashboard extends AppCompatActivity {
+public class InstructorDashboard extends AppCompatActivity {
+
     private Toolbar toolbar;
     private TabLayout tabLayout;
     private ViewPager viewPager;
     private FragmentAdapter adapter;
 
+    CardView queriesCardView;
+    private TabLayout topTabLayout;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_student_dashboard);
+        setContentView(R.layout.activity_instructor_dashboard);
+
+
+
+
 
         initViews();
-        // Setup ViewPager and TabLayout
         setupViewPager();
-        // Setup tabs with icons
-       setupTabs();
+        // tabs w icons
+        setupTabs();
     }
 
     private void initViews() {
         toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        // Set the title for the toolbar
         if (getSupportActionBar() != null) {
-            getSupportActionBar().setTitle("Student Dashboard");
+            getSupportActionBar().setTitle("Teacher Dashboard");
         }
+
+
+        //queriesCardView = findViewById(R.id.queriesCardView);
 
         tabLayout = findViewById(R.id.tab_layout);
         viewPager = findViewById(R.id.view_pager);
@@ -52,7 +58,7 @@ public class StudentDashboard extends AppCompatActivity {
         viewPager.setAdapter(adapter);
         tabLayout.setupWithViewPager(viewPager);
 
-        // Enable swiping and prevent tabs from scrolling
+        // enabke swiping and prevent tabs from scrolling
         viewPager.setOffscreenPageLimit(4);
         tabLayout.setTabGravity(TabLayout.GRAVITY_FILL);
         tabLayout.setTabMode(TabLayout.MODE_FIXED);
@@ -64,7 +70,6 @@ public class StudentDashboard extends AppCompatActivity {
         int[] tabIcons = {
                 R.drawable.ic_home,
                 R.drawable.ic_courses,
-                R.drawable.ic_noti,
                 R.drawable.ic_profile
         };
 
@@ -108,4 +113,3 @@ public class StudentDashboard extends AppCompatActivity {
         backPressTime = System.currentTimeMillis();
     }
 }
-

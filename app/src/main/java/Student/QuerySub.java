@@ -86,8 +86,8 @@ class QueryAdapter extends RecyclerView.Adapter<QueryAdapter.QueryViewHolder> {
             recipientName.setText(query.getRecipient());
             queryText.setText(query.getQueryText());
 
-            statusChip.setText(query.getStatus().getLabel());
-            statusChip.setChipBackgroundColorResource(query.getStatus().getColorResId());
+            statusChip.setText(query.getStatus());
+            //statusChip.setChipBackgroundColorResource(query.getStatus().getColorResId());
 
             if (query.getResponse() != null && !query.getResponse().isEmpty()) {
                 responseText.setVisibility(View.VISIBLE);

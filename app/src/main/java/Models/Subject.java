@@ -1,13 +1,13 @@
 package Models;
 
-
-import java.time.LocalTime;
+// Using Calendar for broader Android compatibility
+import java.util.Calendar;
 
 public class Subject {
     private int subjectId;
     private String subjectName;
     private String day;
-    private LocalTime time;
+    private Calendar time;  // Changed from LocalTime to Calendar
     private int teacherId;
     private int campusId;
     private int year;
@@ -26,7 +26,7 @@ public class Subject {
         private int subjectId;
         private String subjectName;
         private String day;
-        private LocalTime time;
+        private Calendar time;  // Changed from LocalTime to Calendar
         private int teacherId;
         private int campusId;
         private int year;
@@ -45,8 +45,11 @@ public class Subject {
             return this;
         }
 
-        public SubjectBuilder time(LocalTime time) {
-            this.time = time;
+        public SubjectBuilder time(int hourOfDay, int minute) {  // Modified to accept hour and minute
+            Calendar calendar = Calendar.getInstance();
+            calendar.set(Calendar.HOUR_OF_DAY, hourOfDay);
+            calendar.set(Calendar.MINUTE, minute);
+            this.time = calendar;
             return this;
         }
 
@@ -74,9 +77,8 @@ public class Subject {
     public int getSubjectId() { return subjectId; }
     public String getSubjectName() { return subjectName; }
     public String getDay() { return day; }
-    public LocalTime getTime() { return time; }
+    public Calendar getTime() { return time; }
     public int getTeacherId() { return teacherId; }
     public int getCampusId() { return campusId; }
     public int getYear() { return year; }
 }
-
