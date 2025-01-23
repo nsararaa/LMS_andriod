@@ -1,7 +1,7 @@
 package Admin;
 
 
-//TODO NOT WOKRING
+
 import android.content.Intent;
 import android.os.Bundle;
 import android.widget.ArrayAdapter;
@@ -25,7 +25,7 @@ public class AdminTeacherView extends AppCompatActivity {
     private TextView teacherName, teacherEmail, teacherPhone;
     private ListView subjectsList, feedbackList;
     private RatingBar teacherRating;
-    private Button viewStudentsButton;
+
     private ArrayAdapter<String> subjectsAdapter;
     private ArrayAdapter<String> feedbackAdapter;
     private String teacherId;
@@ -75,12 +75,12 @@ public class AdminTeacherView extends AppCompatActivity {
     }
 
     private void setupListeners() {
-        viewStudentsButton.setOnClickListener(v -> {
-            // TODO: SINGLE STUDENT VIEW REQ
-//            Intent intent = new Intent(this, ListView.class);
-//            intent.putExtra("teacherId", teacherId);
-//            startActivity(intent);
-        });
+//        viewStudentsButton.setOnClickListener(v -> {
+//            // TODO: SINGLE STUDENT VIEW REQ
+////            Intent intent = new Intent(this, ListView.class);
+////            intent.putExtra("teacherId", teacherId);
+////            startActivity(intent);
+//        });
 
         subjectsList.setOnItemClickListener((parent, view, position, id) -> {
             String subject = subjectsAdapter.getItem(position);

@@ -14,6 +14,7 @@ import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
 import com.example.lms.R;
+import com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.textfield.TextInputEditText;
 
@@ -33,16 +34,16 @@ public class SharedList extends AppCompatActivity {
     private static final String TYPE_TEACHERS = "teachers";
 
     private String type;
-    private FloatingActionButton addSubjectFab;
+    private ExtendedFloatingActionButton addSubjectFab;
     TextView header;
     private String[] getStudentNames() {
         // TODO: Replace with actual data source
-        return new String[]{"John", "Alice", "Michael"};
+        return new String[]{"Sara", "Manal", "S"};
     }
 
     private String[] getTeacherNames() {
         // TODO: Replace with actual data source
-        return new String[]{"Ms. Smith", "Mr. Brown", "Ms. Green"};
+        return new String[]{"Ms. S", "Mr. B", "Ms. G"};
     }
 
     @Override

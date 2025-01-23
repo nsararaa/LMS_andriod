@@ -1,15 +1,8 @@
 package Instructor;
 
 import android.os.Bundle;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
 
-import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.graphics.Insets;
-import androidx.core.view.ViewCompat;
-import androidx.core.view.WindowInsetsCompat;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentActivity;
 import androidx.viewpager2.adapter.FragmentStateAdapter;
@@ -18,6 +11,10 @@ import androidx.viewpager2.widget.ViewPager2;
 import com.example.lms.R;
 import com.google.android.material.tabs.TabLayout;
 import com.google.android.material.tabs.TabLayoutMediator;
+
+import Instructor.CourseFrags.ClassworkFragment;
+import Instructor.CourseFrags.GeneralFragment;
+import Instructor.CourseFrags.PeopleFragment;
 
 
 public class SingleSubject extends AppCompatActivity {

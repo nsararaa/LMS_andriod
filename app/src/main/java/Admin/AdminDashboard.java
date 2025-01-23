@@ -6,6 +6,7 @@ import android.view.View;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 import androidx.cardview.widget.CardView;
 
 import com.example.lms.R;
@@ -13,22 +14,43 @@ import com.example.lms.R;
 import Admin.Subjects.SubjectDashboard;
 import Shared.Attendance.AttendanceDashboard;
 import Admin.Fee.FeeDashboard;
+import Shared.ResultList;
 import Shared.SharedList;
 
 public class AdminDashboard extends AppCompatActivity implements View.OnClickListener {
 
     private String campusName = "School Management";
+    private Toolbar toolbar;
+    private void initToolbar() {
+        toolbar = findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
 
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_admin_campus_view);
+        // Set the title for the toolbar
+        if (getSupportActionBar() != null) {
+            getSupportActionBar().setTitle("Admin Dashboard");
+        }
 
-        // Get campus name from intent
-        campusName = getIntent().getStringExtra("campusName");
-        TextView header = findViewById(R.id.header);
-        header.setText(campusName);
+        toolbar.setNavigationIcon(R.drawable.ic_menu); // Replace with your hamburger icon
+        toolbar.setNavigationOnClickListener(v -> {
+            // Handle navigation click
+        });
+    }
+//    @Override
+//    public boolean onNavigationItemSelected(MenuItem item) {
+//        int id = item.getItemId();
 
+//        if (id == R.id.nav_classes) {
+//            // Handle Classes action
+//        } else if (id == R.id.nav_calendar) {
+//            // Handle Calendar action
+//        }
+//
+//        DrawerLayout drawer = findViewById(R.id.admi);
+//        drawer.closeDrawer(GravityCompat.START);
+//        return true;
+    //}
+
+    void initManagementCards(){
 
 
         CardView studentManagementCard = findViewById(R.id.student_management_card);
@@ -47,6 +69,21 @@ public class AdminDashboard extends AppCompatActivity implements View.OnClickLis
         resultsCard.setOnClickListener(this);
         feeManagementCard.setOnClickListener(this);
         alumniCard.setOnClickListener(this);
+
+        // Get campus name from intent
+        campusName = getIntent().getStringExtra("campusName");
+        TextView header = findViewById(R.id.header);
+        header.setText(campusName);
+
+    }
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_admin_dashboard);
+     //   initToolbar();
+        initManagementCards();;
+
     }
 
     @Override
@@ -62,7 +99,7 @@ public class AdminDashboard extends AppCompatActivity implements View.OnClickLis
         } else if (viewId == R.id.attendance_management_card) {
             navigateToActivity(AttendanceDashboard.class, "Attendance Management");
         } else if (viewId == R.id.result_management_card) {
-            handleUnimplementedFeature("Results");
+            navigateToActivity(ResultList.class, "Result Management");
         } else if (viewId == R.id.fee_management_card) {
             navigateToActivity(FeeDashboard.class, "Attendance Management");
 

@@ -6,13 +6,18 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
 import com.example.lms.R;
-import com.google.android.material.button.MaterialButton;
-import com.google.android.material.button.MaterialButtonToggleGroup;
+import android.view.View;
+import android.widget.LinearLayout;
+import android.widget.TextView;
+import com.google.android.material.progressindicator.CircularProgressIndicator;
 
 public class AttendanceDashboard extends AppCompatActivity {
-    private MaterialButtonToggleGroup toggleGroup;
-    private MaterialButton btnView;
-    private MaterialButton btnMark;
+    private CircularProgressIndicator presentProgress;
+    private CircularProgressIndicator absentProgress;
+    private TextView tvPresentCount;
+    private TextView tvAbsentCount;
+    private LinearLayout btnMarkAttendance;
+    private LinearLayout btnViewRecords;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -21,32 +26,58 @@ public class AttendanceDashboard extends AppCompatActivity {
 
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+        if (getSupportActionBar() != null) {
+            getSupportActionBar().setDisplayShowTitleEnabled(false);
+        }
 
-        toggleGroup = findViewById(R.id.toggleGroup);
-        btnView = findViewById(R.id.btnView);
-        btnMark = findViewById(R.id.btnMark);
-
-
-        setupToggleGroupListener();
+        initializeViews();
+        setupClickListeners();
+        loadAttendanceData();
     }
 
-    private void setupToggleGroupListener() {
-        toggleGroup.addOnButtonCheckedListener(new MaterialButtonToggleGroup.OnButtonCheckedListener() {
-            @Override
-            public void onButtonChecked(MaterialButtonToggleGroup group, int checkedId, boolean isChecked) {
-                if (!isChecked) return; // Ignore unchecking events
+    private void initializeViews() {
+        presentProgress = findViewById(R.id.presentProgress);
+        absentProgress = findViewById(R.id.absentProgress);
+        tvPresentCount = findViewById(R.id.tvPresentCount);
+        tvAbsentCount = findViewById(R.id.tvAbsentCount);
+        btnMarkAttendance = findViewById(R.id.btnMarkAttendance);
+        btnViewRecords = findViewById(R.id.btnViewRecords);
+    }
 
-                Intent intent;
-                if (checkedId == R.id.btnView) {
+    private void setupClickListeners() {
+        btnMarkAttendance.setOnClickListener(v -> launchMarkAttendance());
+        btnViewRecords.setOnClickListener(v -> launchViewRecords());
+    }
 
-                    intent = new Intent(AttendanceDashboard.this, ViewAttendance.class);
-                    startActivity(intent);
-                } else if (checkedId == R.id.btnMark) {
+    private void loadAttendanceData() {
+        int totalStudents = 50;
+        int presentStudents = 42;
+        int absentStudents = 8;
 
-                    intent = new Intent(AttendanceDashboard.this, MarkAttendance.class);
-                    startActivity(intent);
-                }
-            }
-        });
+        int presentPercentage = (presentStudents * 100) / totalStudents;
+        int absentPercentage = (absentStudents * 100) / totalStudents;
+
+        updateAttendanceDisplay(presentStudents, absentStudents, totalStudents,
+                presentPercentage, absentPercentage);
+    }
+
+    private void updateAttendanceDisplay(int presentCount, int absentCount,
+                                         int totalCount, int presentPercentage,
+                                         int absentPercentage) {
+        presentProgress.setProgress(presentPercentage);
+        absentProgress.setProgress(absentPercentage);
+
+        tvPresentCount.setText(String.format("%d/%d Students", presentCount, totalCount));
+        tvAbsentCount.setText(String.format("%d/%d Students", absentCount, totalCount));
+    }
+
+    private void launchMarkAttendance() {
+        Intent i = new Intent(AttendanceDashboard.this, MarkAttendance.class);
+        startActivity(i);
+    }
+
+    private void launchViewRecords() {
+        Intent i = new Intent(AttendanceDashboard.this, ViewAttendance.class);
+        startActivity(i);
     }
 }

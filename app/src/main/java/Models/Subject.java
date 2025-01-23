@@ -1,6 +1,5 @@
 package Models;
 
-// Using Calendar for broader Android compatibility
 import java.util.Calendar;
 
 public class Subject {
@@ -11,12 +10,24 @@ public class Subject {
     private int teacherId;
     private int campusId;
     private int year;
-    private String name; // Added to store teacher name
-    private int studentCount; // Added to track the number of students
+    private String teacherName; // Renamed for clarity
+    private int studentCount;   // Added to track the number of students
 
-    public Subject(String subjectName, String name, int studentCount) {
+    // Constructor with full parameters
+    public Subject(String subjectName, String day, Calendar time, int teacherId, int campusId, int year, String teacherName) {
         this.subjectName = subjectName;
-        this.name = name;
+        this.day = day;
+        this.time = time;
+        this.teacherId = teacherId;
+        this.campusId = campusId;
+        this.year = year;
+        this.teacherName = teacherName;
+    }
+
+    // Simplified Constructor for specific use case
+    public Subject(String subjectName, String teacherName, int studentCount) {
+        this.subjectName = subjectName;
+        this.teacherName = teacherName;
         this.studentCount = studentCount;
 
         // Default values for optional fields
@@ -27,6 +38,8 @@ public class Subject {
         this.campusId = 0;
         this.year = 0;
     }
+
+    // Private Constructor for Builder Pattern
     private Subject(SubjectBuilder builder) {
         this.subjectId = builder.subjectId;
         this.subjectName = builder.subjectName;
@@ -35,20 +48,21 @@ public class Subject {
         this.teacherId = builder.teacherId;
         this.campusId = builder.campusId;
         this.year = builder.year;
-        this.name = builder.name;
+        this.teacherName = builder.teacherName;
         this.studentCount = builder.studentCount;
     }
 
+    // Builder Class
     public static class SubjectBuilder {
         private int subjectId;
         private String subjectName;
         private String day;
-        private Calendar time;  // Using Calendar for time representation
+        private Calendar time;
         private int teacherId;
         private int campusId;
         private int year;
-        private String name;
-        private int studentCount; // Added to track the number of students
+        private String teacherName;
+        private int studentCount;
 
         public SubjectBuilder(String subjectName) {
             this.subjectName = subjectName;
@@ -59,9 +73,8 @@ public class Subject {
             return this;
         }
 
-
-        public SubjectBuilder name(String name) {
-            this.name = name;
+        public SubjectBuilder teacherName(String teacherName) {
+            this.teacherName = teacherName;
             return this;
         }
 
@@ -69,7 +82,6 @@ public class Subject {
             this.day = day;
             return this;
         }
-
 
         public SubjectBuilder time(int hourOfDay, int minute) {
             Calendar calendar = Calendar.getInstance();
@@ -134,10 +146,47 @@ public class Subject {
     }
 
     public String getTeacherName() {
-        return name;
+        return teacherName;
     }
 
     public int getStudentCount() {
         return studentCount;
+    }
+
+    // Setters
+    public void setSubjectId(int subjectId) {
+        this.subjectId = subjectId;
+    }
+
+    public void setSubjectName(String subjectName) {
+        this.subjectName = subjectName;
+    }
+
+    public void setDay(String day) {
+        this.day = day;
+    }
+
+    public void setTime(Calendar time) {
+        this.time = time;
+    }
+
+    public void setTeacherId(int teacherId) {
+        this.teacherId = teacherId;
+    }
+
+    public void setCampusId(int campusId) {
+        this.campusId = campusId;
+    }
+
+    public void setYear(int year) {
+        this.year = year;
+    }
+
+    public void setTeacherName(String teacherName) {
+        this.teacherName = teacherName;
+    }
+
+    public void setStudentCount(int studentCount) {
+        this.studentCount = studentCount;
     }
 }

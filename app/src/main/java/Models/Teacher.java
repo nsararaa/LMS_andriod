@@ -7,7 +7,19 @@ public class Teacher {
     private float rating;
     private String[] subjects;
     private String[] feedback;
+    private Integer id;
 
+    // Constructor
+    public Teacher(String name, String email, String phone,
+                   float rating, String[] subjects, String[] feedback, Integer id) {
+        this.name = name;
+        this.email = email;
+        this.phone = phone;
+        this.rating = rating;
+        this.subjects = subjects;
+        this.feedback = feedback;
+        this.id = id;
+    }
     public Teacher(String name, String email, String phone,
                    float rating, String[] subjects, String[] feedback) {
         this.name = name;
@@ -16,6 +28,7 @@ public class Teacher {
         this.rating = rating;
         this.subjects = subjects;
         this.feedback = feedback;
+        this.id = id;
     }
 
     // Getters
@@ -41,5 +54,14 @@ public class Teacher {
 
     public String[] getFeedback() {
         return feedback;
+    }
+
+    public Integer getId() {
+        return id;
+    }
+
+    // Setter for ID (if needed)
+    public void setId(Integer id) {
+        this.id = id;
     }
 }

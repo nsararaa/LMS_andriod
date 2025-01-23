@@ -1,11 +1,10 @@
-package Instructor;
+package Instructor.CourseFrags;
 
 import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 
 import android.view.LayoutInflater;
@@ -19,6 +18,7 @@ import com.example.lms.R;
 import java.util.ArrayList;
 import java.util.List;
 
+import Instructor.QueryList;
 import Models.Query;
 
 
@@ -69,11 +69,14 @@ public class GeneralFragment extends Fragment {
     //DB CALL TODO
     private void setupDummyData() {
         todaySchedule = new ArrayList<>();
+        //IMPROVE TODO
         todaySchedule.add(new ScheduleItem("09:00 AM", "Mathematics"));
         todaySchedule.add(new ScheduleItem("12:00 PM", "Break"));
-        todaySchedule.add(new ScheduleItem("01:00 PM", "Chemistry"));
+        todaySchedule.add(new ScheduleItem("01:00 PM", "Mathematics"));
 
-        // Setup dummy queries
+
+
+
         recentQueries = new ArrayList<>();
         recentQueries.add(new Query(
                 "Math Teacher",

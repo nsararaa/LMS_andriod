@@ -9,6 +9,7 @@ import android.view.Gravity;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 import com.example.lms.R;
@@ -151,5 +152,16 @@ public class selectCampus extends AppCompatActivity {
         createCampusCards(campuses);
 
 
+    }
+    // Optional: Handle back press to exit app
+    private long backPressTime;
+    @Override
+    public void onBackPressed() {
+        if (backPressTime + 2000 > System.currentTimeMillis()) {
+            super.onBackPressed();
+        } else {
+            Toast.makeText(this, "Press back again to exit", Toast.LENGTH_SHORT).show();
+        }
+        backPressTime = System.currentTimeMillis();
     }
 }

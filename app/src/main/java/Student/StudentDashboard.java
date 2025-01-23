@@ -64,7 +64,6 @@ public class StudentDashboard extends AppCompatActivity {
         int[] tabIcons = {
                 R.drawable.ic_home,
                 R.drawable.ic_courses,
-                R.drawable.ic_noti,
                 R.drawable.ic_profile
         };
 

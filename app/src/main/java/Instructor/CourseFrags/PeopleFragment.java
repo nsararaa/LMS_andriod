@@ -1,4 +1,4 @@
-package Instructor;
+package Instructor.CourseFrags;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -14,17 +14,14 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
-import android.widget.TextView;
 
 import com.example.lms.R;
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.textfield.TextInputEditText;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 
 import Admin.AdminSingleStudentView;
-import Admin.addStudent;
 
 public class PeopleFragment extends Fragment {
     private ArrayAdapter<String> adapter;

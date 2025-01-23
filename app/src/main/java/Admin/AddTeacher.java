@@ -15,6 +15,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
+import android.widget.Button;
 import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 import com.google.android.material.button.MaterialButton;
@@ -27,7 +28,7 @@ import java.util.Arrays;
 public class AddTeacher extends AppCompatActivity {
     private TextInputEditText etTeacherName, etPassword;
     private AutoCompleteTextView subjectDropdown, campusDropdown;
-    private MaterialButton btnSubmit, btnBulkSubmit;
+    private Button btnSubmit, btnBulkSubmit;
     private MaterialCardView bulkUploadCard;
 
     @Override
@@ -97,9 +98,7 @@ public class AddTeacher extends AppCompatActivity {
 //        bulkUploadCard.setStateListAnimator(android.animation.AnimatorInflater
 //                .loadStateListAnimator(this, R.animator.card_lift));
 
-        // Add ripple effect to buttons
-        btnSubmit.setRippleColor(getColorStateList(R.color.primary_light));
-        btnBulkSubmit.setRippleColor(getColorStateList(R.color.primary_light));
+
     }
 
     private void validateAndSubmit() {

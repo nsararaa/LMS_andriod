@@ -1,5 +1,6 @@
 package Admin.Subjects;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.graphics.Rect;
 import android.view.LayoutInflater;
@@ -18,6 +19,7 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import java.util.ArrayList;
 import java.util.List;
 
+import Admin.addSubject;
 import Models.Subject;
 public class SubjectDashboard extends AppCompatActivity {
     private RecyclerView subjectsRecyclerView;
@@ -52,7 +54,8 @@ public class SubjectDashboard extends AppCompatActivity {
 
     private void setupFabButton() {
         addSubjectFab.setOnClickListener(v -> {
-            // Handle FAB click, e.g., navigate to add a new subject
+            Intent i = new Intent(SubjectDashboard.this, addSubject.class);
+            startActivity(i);
         });
     }
 

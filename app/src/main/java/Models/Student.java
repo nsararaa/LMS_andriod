@@ -36,6 +36,12 @@ public class Student {
         this.subjects = builder.subjects;
     }
 
+    public Student(int studentId, String studentName, String phoneNumber, int year) {
+        this.studentId = studentId;
+        this.studentName = studentName;
+        this.phoneNumber = phoneNumber;
+        this.year = year;
+    }
     public static class StudentBuilder {
 
         private int rfid;
@@ -58,6 +64,7 @@ public class Student {
             this.phoneNumber = phoneNumber;
             this.password = password;
         }
+
 
         // Existing builder methods...
         public StudentBuilder rfid(int rfid) {
