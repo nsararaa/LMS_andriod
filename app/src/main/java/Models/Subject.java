@@ -6,14 +6,14 @@ public class Subject {
     private int subjectId;
     private String subjectName;
     private String day;
-    private Calendar time;  // Using Calendar for time representation
+    private Calendar time;
     private int teacherId;
     private int campusId;
     private int year;
-    private String teacherName; // Renamed for clarity
-    private int studentCount;   // Added to track the number of students
+    private String teacherName;
+    private int studentCount;
 
-    // Constructor with full parameters
+
     public Subject(String subjectName, String day, Calendar time, int teacherId, int campusId, int year, String teacherName) {
         this.subjectName = subjectName;
         this.day = day;
@@ -24,13 +24,13 @@ public class Subject {
         this.teacherName = teacherName;
     }
 
-    // Simplified Constructor for specific use case
+
     public Subject(String subjectName, String teacherName, int studentCount) {
         this.subjectName = subjectName;
         this.teacherName = teacherName;
         this.studentCount = studentCount;
 
-        // Default values for optional fields
+
         this.subjectId = 0;
         this.day = null;
         this.time = null;
@@ -39,7 +39,7 @@ public class Subject {
         this.year = 0;
     }
 
-    // Private Constructor for Builder Pattern
+
     private Subject(SubjectBuilder builder) {
         this.subjectId = builder.subjectId;
         this.subjectName = builder.subjectName;
@@ -52,7 +52,7 @@ public class Subject {
         this.studentCount = builder.studentCount;
     }
 
-    // Builder Class
+
     public static class SubjectBuilder {
         private int subjectId;
         private String subjectName;
@@ -116,7 +116,7 @@ public class Subject {
         }
     }
 
-    // Getters
+
     public int getSubjectId() {
         return subjectId;
     }
@@ -153,7 +153,7 @@ public class Subject {
         return studentCount;
     }
 
-    // Setters
+
     public void setSubjectId(int subjectId) {
         this.subjectId = subjectId;
     }

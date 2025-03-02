@@ -57,9 +57,9 @@ public class AdminSingleStudentView extends AppCompatActivity {
 
 
 
-    //  get from db TODO
+    //  get from db TODO DB
     private String getPersonalDetails() {
-        return "Name: John Doe\nID: 12345\nClass: X-A\nContact: +1234567890";
+        return "Name: S \nID: 12345\nClass: X-A\nContact: +1234567890";
     }
 
     private String[] getSubjectsEnrolled() {

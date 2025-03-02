@@ -1,39 +1,51 @@
 package Models;
+import java.util.ArrayList;
+import java.util.List;
 
 public class Campus {
-    private int campusID;
+    private int campusId;
     private String campusName;
+    private List<Student> students;
+    private List<Teacher> teachers;
+    private List<Subject> subjects;
 
-    // Constructor
-    public Campus(int campusID, String campusName) {
-        this.campusID = campusID;
+    public Campus(int campusId, String campusName) {
+        this.campusId = campusId;
         this.campusName = campusName;
+        this.students = new ArrayList<>();
+        this.teachers = new ArrayList<>();
+        this.subjects = new ArrayList<>();
     }
 
-    // Getters
-    public int getCampusID() {
-        return campusID;
+    public void addStudent(Student student) {
+        students.add(student);
+    }
+
+    public void addTeacher(Teacher teacher) {
+        teachers.add(teacher);
+    }
+
+    public void addSubject(Subject subject) {
+        subjects.add(subject);
+    }
+
+    public int getCampusId() {
+        return campusId;
     }
 
     public String getCampusName() {
         return campusName;
     }
 
-    // Setters
-    public void setCampusID(int campusID) {
-        this.campusID = campusID;
+    public List<Student> getStudents() {
+        return students;
     }
 
-    public void setCampusName(String campusName) {
-        this.campusName = campusName;
+    public List<Teacher> getTeachers() {
+        return teachers;
     }
 
-    // toString() Method (Optional: for easy representation)
-    @Override
-    public String toString() {
-        return "Campus{" +
-                "campusID=" + campusID +
-                ", campusName='" + campusName + '\'' +
-                '}';
+    public List<Subject> getSubjects() {
+        return subjects;
     }
 }

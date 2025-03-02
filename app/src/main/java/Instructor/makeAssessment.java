@@ -34,7 +34,7 @@ public class makeAssessment extends AppCompatActivity {
         header.setText("Make " + type);
 
 
-//        // Initialize UI components
+
 //        spinnerAssessmentType = findViewById(R.id.spinnerAssessmentType);
 //        spinnerSubject = findViewById(R.id.spinnerSubject);
         etTotalMarks = findViewById(R.id.etTotalMarks);
@@ -45,9 +45,9 @@ public class makeAssessment extends AppCompatActivity {
         etGradeD = findViewById(R.id.etGradeD);
         btnCreateAssessment = findViewById(R.id.btnCreateAssessment);
 
-        // Set button listener
+
         btnCreateAssessment.setOnClickListener(v -> {
-            // Example: Validate and collect data
+
           //  String assessmentType = spinnerAssessmentType.getSelectedItem().toString();
            // String subject = spinnerSubject.getSelectedItem().toString();
             String totalMarks = etTotalMarks.getText().toString();
@@ -56,7 +56,7 @@ public class makeAssessment extends AppCompatActivity {
             if (totalMarks.isEmpty() || gradeAPlus.isEmpty()) {
                 Toast.makeText(makeAssessment.this, "Please fill all fields", Toast.LENGTH_SHORT).show();
             } else {
-                // Save data or send to backend
+                //  TODO DB CALL -> upload
                 Toast.makeText(makeAssessment.this, "Assessment Created!", Toast.LENGTH_SHORT).show();
             }
         });

@@ -93,6 +93,7 @@ public class ClassworkFragment extends Fragment {
         mocksRecyclerView.setAdapter(mocksAdapter);
     }
 
+    //TODO DB CALL
     private List<Assignment> generateDummyAssignments() {
         List<Assignment> assignments = new ArrayList<>();
         assignments.add(new Assignment(
@@ -161,11 +162,7 @@ public class ClassworkFragment extends Fragment {
     }
 
     private void loadData() {
-        // Load data for each section from your data source
-        // Example:
-        // assignmentsRecyclerView.getAdapter().submitList(assignmentsList);
-        // monthlyRecyclerView.getAdapter().submitList(monthlyList);
-        // etc.
+        //TODO DB CALL
     }
 
     private void togglePopupVisibility() {
@@ -187,11 +184,11 @@ public class ClassworkFragment extends Fragment {
     }
 
     private void handleOptionClick(String option) {
-        // Handle the option click based on the type
+
         Toast.makeText(getContext(), "Creating new " + option, Toast.LENGTH_SHORT).show();
         hidePopup();
 
-        // Example: Start appropriate activity based on selection
+
         Intent intent;
         intent = new Intent(getContext(), makeAssessment.class);
 

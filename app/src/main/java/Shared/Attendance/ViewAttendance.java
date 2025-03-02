@@ -36,19 +36,19 @@ public class ViewAttendance extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_view_attendance);
 
-        // Initialize views
+
         rvAttendance = findViewById(R.id.rvAttendance);
         tvPresentCount = findViewById(R.id.tvPresentCount);
         tvAbsentCount = findViewById(R.id.tvAbsentCount);
         FloatingActionButton fabRefresh = findViewById(R.id.fabRefresh);
 
-        // Setup RecyclerView
+
         rvAttendance.setLayoutManager(new LinearLayoutManager(this));
         attendanceList = getDummyData();
         adapter = new AttendanceAdapter(attendanceList);
         rvAttendance.setAdapter(adapter);
 
-        // Update counts
+
         updateAttendanceCounts();
 
         fabRefresh.setOnClickListener(v -> refreshAttendance());
@@ -66,12 +66,13 @@ public class ViewAttendance extends AppCompatActivity {
     }
 
     private void refreshAttendance() {
-        // Simulate refresh - replace with actual data fetch
+        //TODO DB CALL
         attendanceList = getDummyData();
         adapter.updateData(attendanceList);
         updateAttendanceCounts();
     }
 
+    //TODO DB CALL
     private List<StudentAttendance> getDummyData() {
         List<StudentAttendance> dummyData = new ArrayList<>();
         dummyData.add(new StudentAttendance(1001, "John Smith", "CS001", true, "2025-01-09"));

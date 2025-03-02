@@ -41,11 +41,10 @@ public class QueryList extends AppCompatActivity {
 
         RecyclerView recyclerView = findViewById(R.id.queriesRecyclerView);
         QueriesAdapter adapter = new QueriesAdapter(this, query -> {
-            // Show response dialog when query is clicked
             // showResponseDialog(query);
         });
 
-        // Set the adapter and layout manager
+
         recyclerView.setAdapter(adapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
@@ -53,6 +52,7 @@ public class QueryList extends AppCompatActivity {
         adapter.setQueries(getDummyQueries());
     }
 
+    //TODO DB CALL
     private List<Query> getDummyQueries() {
         List<Query> queries = new ArrayList<>();
         queries.add(new Query("John Doe", "What is the deadline for the project?"));
@@ -61,7 +61,7 @@ public class QueryList extends AppCompatActivity {
         queries.add(new Query("Emily Davis", "Where can I find additional resources for the course?"));
         queries.add(new Query("Michael Brown", "Are there any sample papers available?"));
 
-        // Add a responded query as an example
+
         Query respondedQuery = new Query("Sophia Wilson", "Can we reschedule the quiz?");
         respondedQuery.setResponse("The quiz has been rescheduled to next Monday.");
         queries.add(respondedQuery);

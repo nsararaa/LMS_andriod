@@ -71,7 +71,6 @@ public class addStudent extends AppCompatActivity {
     }
 
     //TODO overlap of error and show password
-
     private void updateSubjectsDisplay() {
         StringBuilder display = new StringBuilder();
         for (String subject : selectedSubjects) {

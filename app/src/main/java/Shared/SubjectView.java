@@ -57,7 +57,7 @@ public class SubjectView extends AppCompatActivity {
         String subjectName = i.getStringExtra("SubjectName");
 
 
-        //DUMMY DATA: REMOVE
+        //TODO DB CALL
         Subject subject = new Subject.SubjectBuilder("Mathematics")
                 .subjectId(1001)
                 .day("Monday")

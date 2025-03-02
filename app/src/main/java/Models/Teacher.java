@@ -9,7 +9,7 @@ public class Teacher {
     private String[] feedback;
     private Integer id;
 
-    // Constructor
+
     public Teacher(String name, String email, String phone,
                    float rating, String[] subjects, String[] feedback, Integer id) {
         this.name = name;
@@ -31,7 +31,7 @@ public class Teacher {
         this.id = id;
     }
 
-    // Getters
+
     public String getName() {
         return name;
     }
@@ -60,7 +60,7 @@ public class Teacher {
         return id;
     }
 
-    // Setter for ID (if needed)
+
     public void setId(Integer id) {
         this.id = id;
     }

@@ -29,9 +29,9 @@ public class TeacherDashboard extends AppCompatActivity {
         setContentView(R.layout.activity_instructor_dashboard);
 
         initViews();
-        // Setup ViewPager and TabLayout
+
         setupViewPager();
-        // Setup tabs with icons
+
         setupTabs();
     }
 
@@ -39,7 +39,7 @@ public class TeacherDashboard extends AppCompatActivity {
         toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        // Set the title for the toolbar
+        //  title for the toolbar
         if (getSupportActionBar() != null) {
             getSupportActionBar().setTitle("Teacher Dashboard");
         }
@@ -54,7 +54,7 @@ public class TeacherDashboard extends AppCompatActivity {
         viewPager.setAdapter(adapter);
         tabLayout.setupWithViewPager(viewPager);
 
-        // Enable swiping and prevent tabs from scrolling
+        //swiping
         viewPager.setOffscreenPageLimit(4);
         tabLayout.setTabGravity(TabLayout.GRAVITY_FILL);
         tabLayout.setTabMode(TabLayout.MODE_FIXED);
@@ -62,14 +62,14 @@ public class TeacherDashboard extends AppCompatActivity {
 
 
     private void setupTabs() {
-        // Create tab icons
+
         int[] tabIcons = {
                 R.drawable.ic_home,
                 R.drawable.ic_courses,
                 R.drawable.ic_profile
         };
 
-        // Set icons for tabs
+
         for (int i = 0; i < tabLayout.getTabCount(); i++) {
             TabLayout.Tab tab = tabLayout.getTabAt(i);
             if (tab != null) {
@@ -77,27 +77,26 @@ public class TeacherDashboard extends AppCompatActivity {
             }
         }
 
-        // Add tab selection listener
+
         tabLayout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
             @Override
             public void onTabSelected(TabLayout.Tab tab) {
                 viewPager.setCurrentItem(tab.getPosition());
-                // You can add animation or special effects here when tab is selected
             }
 
             @Override
             public void onTabUnselected(TabLayout.Tab tab) {
-                // Handle tab unselection if needed
+
             }
 
             @Override
             public void onTabReselected(TabLayout.Tab tab) {
-                // Handle tab reselection if needed
+
             }
         });
     }
 
-    // Optional: Handle back press to exit app
+    // back press
     private long backPressTime;
     @Override
     public void onBackPressed() {

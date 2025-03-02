@@ -15,7 +15,6 @@ import com.google.android.material.textfield.TextInputEditText;
 import com.google.android.material.textfield.TextInputLayout;
 
 import Admin.selectCampus;
-import Instructor.InstructorDashboard;
 import Instructor.TeacherDashboard;
 import Student.StudentDashboard;
 
@@ -36,15 +35,7 @@ public class shared_login extends AppCompatActivity {
         // Initialize views
         initializeViews();
         setupRoleSpinner();
-        setupClickListeners();
-
-//        testFuncs();
-
     }
-    void testFuncs(){
-        Intent intent = new Intent(this, InstructorDashboard.class);
-        startActivity(intent);
-   }
 
     private void initializeViews() {
         tilEmail = findViewById(R.id.tilEmail);
@@ -79,10 +70,6 @@ public class shared_login extends AppCompatActivity {
         spinnerRole.setAdapter(adapter);
     }
 
-    private void setupClickListeners() {
-        // Any additional click listeners can be set up here
-    }
-
     private void handleLogin() {
         String email = etEmail.getText().toString().trim();
         String password = etPassword.getText().toString().trim();
@@ -93,20 +80,31 @@ public class shared_login extends AppCompatActivity {
             return;
         }
 
-        // Handle login based on role
-        switch (selectedRole.toLowerCase()) {
+        // Redirect to the selected role's dashboard
+        redirectBasedOnRole(selectedRole);
+    }
+
+    private void redirectBasedOnRole(String role) {
+        Intent intent = null;
+
+        switch (role.toLowerCase()) {
             case "admin":
-                startActivity(new Intent(shared_login.this, selectCampus.class));
+                intent = new Intent(shared_login.this, selectCampus.class);
                 break;
             case "teacher":
-                startActivity(new Intent(shared_login.this, TeacherDashboard.class));
+                intent = new Intent(shared_login.this, TeacherDashboard.class);
                 break;
             case "student":
-                startActivity(new Intent(shared_login.this, StudentDashboard.class));
+                intent = new Intent(shared_login.this, StudentDashboard.class);
                 break;
             default:
-                Toast.makeText(this, "Please select a valid role", Toast.LENGTH_SHORT).show();
-                break;
+                Toast.makeText(this, "Unknown user role", Toast.LENGTH_SHORT).show();
+                return;
+        }
+
+        if (intent != null) {
+            startActivity(intent);
+            finish(); // Close the login activity
         }
     }
 

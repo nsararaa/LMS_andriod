@@ -19,7 +19,7 @@ public class Assignment implements Serializable {
     private String createdBy;
     private AssignmentStatus status;
 
-    // Enum for assignment status
+
     public enum AssignmentStatus {
         DRAFT,
         PUBLISHED,
@@ -27,7 +27,7 @@ public class Assignment implements Serializable {
         ARCHIVED
     }
 
-    // Constructor with essential fields
+
     public Assignment(String title, String description, Date dueDate, String instructions) {
         this.id = UUID.randomUUID().toString();
         this.title = title;
@@ -48,7 +48,7 @@ public class Assignment implements Serializable {
         this.createdBy = createdBy;
     }
 
-    // Getters
+
     public String getId() {
         return id;
     }
@@ -70,7 +70,7 @@ public class Assignment implements Serializable {
     }
 
     public List<String> getAttachmentUrls() {
-        return new ArrayList<>(attachmentUrls); // Return a copy to prevent external modification
+        return new ArrayList<>(attachmentUrls);
     }
 
     public Date getCreatedAt() {
@@ -89,7 +89,7 @@ public class Assignment implements Serializable {
         return status;
     }
 
-    // Setters
+
     public void setTitle(String title) {
         this.title = title;
         this.updatedAt = new Date();
@@ -135,7 +135,7 @@ public class Assignment implements Serializable {
         this.updatedAt = new Date();
     }
 
-    // Utility methods
+
     public boolean isOverdue() {
         return new Date().after(dueDate);
     }

@@ -1,9 +1,11 @@
 package Student;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.lms.MainActivity;
 import com.example.lms.R;
 
 import androidx.appcompat.widget.Toolbar;
@@ -27,9 +29,9 @@ public class StudentDashboard extends AppCompatActivity {
         setContentView(R.layout.activity_student_dashboard);
 
         initViews();
-        // Setup ViewPager and TabLayout
+
         setupViewPager();
-        // Setup tabs with icons
+
        setupTabs();
     }
 
@@ -37,7 +39,7 @@ public class StudentDashboard extends AppCompatActivity {
         toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        // Set the title for the toolbar
+
         if (getSupportActionBar() != null) {
             getSupportActionBar().setTitle("Student Dashboard");
         }
@@ -52,7 +54,7 @@ public class StudentDashboard extends AppCompatActivity {
         viewPager.setAdapter(adapter);
         tabLayout.setupWithViewPager(viewPager);
 
-        // Enable swiping and prevent tabs from scrolling
+
         viewPager.setOffscreenPageLimit(4);
         tabLayout.setTabGravity(TabLayout.GRAVITY_FILL);
         tabLayout.setTabMode(TabLayout.MODE_FIXED);
@@ -60,14 +62,14 @@ public class StudentDashboard extends AppCompatActivity {
 
 
     private void setupTabs() {
-        // Create tab icons
+
         int[] tabIcons = {
                 R.drawable.ic_home,
                 R.drawable.ic_courses,
                 R.drawable.ic_profile
         };
 
-        // Set icons for tabs
+
         for (int i = 0; i < tabLayout.getTabCount(); i++) {
             TabLayout.Tab tab = tabLayout.getTabAt(i);
             if (tab != null) {
@@ -75,34 +77,37 @@ public class StudentDashboard extends AppCompatActivity {
             }
         }
 
-        // Add tab selection listener
+
         tabLayout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
             @Override
             public void onTabSelected(TabLayout.Tab tab) {
                 viewPager.setCurrentItem(tab.getPosition());
-                // You can add animation or special effects here when tab is selected
+
             }
 
             @Override
             public void onTabUnselected(TabLayout.Tab tab) {
-                // Handle tab unselection if needed
+
             }
 
             @Override
             public void onTabReselected(TabLayout.Tab tab) {
-                // Handle tab reselection if needed
+
             }
         });
     }
 
-    // Optional: Handle back press to exit app
     private long backPressTime;
+
     @Override
     public void onBackPressed() {
         if (backPressTime + 2000 > System.currentTimeMillis()) {
-            super.onBackPressed();
+            Intent intent = new Intent(this, MainActivity.class);
+            intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
+            startActivity(intent);
+            finish();
         } else {
-            Toast.makeText(this, "Press back again to exit", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "Press back again to return to login", Toast.LENGTH_SHORT).show();
         }
         backPressTime = System.currentTimeMillis();
     }

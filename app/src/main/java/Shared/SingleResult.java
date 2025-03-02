@@ -25,7 +25,7 @@ public class SingleResult extends AppCompatActivity {
 
         initializeViews();
 
-        // For testing, use dummy data
+        //TODO DB CALL
         setAssessmentData(getDummyData());
     }
 
@@ -37,7 +37,7 @@ public class SingleResult extends AppCompatActivity {
     private MonthlyAssessment getDummyData() {
         MonthlyAssessment monthlyAssessment = new MonthlyAssessment("January 2025");
 
-        // Adding different subjects with their weekly marks
+        //TODO DB CALL
         monthlyAssessment.addAssessment(new SubjectAssessment("Mathematics", 85.5, 90.0, 88.5));
         monthlyAssessment.addAssessment(new SubjectAssessment("Physics", 82.0, 87.5, 84.0));
         monthlyAssessment.addAssessment(new SubjectAssessment("Chemistry", 78.5, 88.0, 92.5));
@@ -52,13 +52,13 @@ public class SingleResult extends AppCompatActivity {
     public void setAssessmentData(MonthlyAssessment monthlyAssessment) {
         tvMonthYear.setText(monthlyAssessment.getMonthYear());
 
-        // Clear existing rows except header
+
         int childCount = tableAssessment.getChildCount();
         if (childCount > 1) {
             tableAssessment.removeViews(1, childCount - 1);
         }
 
-        // Add subject rows
+
         for (SubjectAssessment assessment : monthlyAssessment.getAssessments()) {
             addSubjectRow(assessment);
         }
@@ -69,21 +69,21 @@ public class SingleResult extends AppCompatActivity {
         row.setPadding(8, 8, 8, 8);
         row.setBackgroundColor(getResources().getColor(R.color.table_row_background));
 
-        // Add subject name
+
         addCell(row, assessment.getSubject(), 120);
 
-        // Add weekly marks
+
         double[] weeklyMarks = assessment.getAllWeeklyMarks();
         for (double mark : weeklyMarks) {
             addCell(row, String.format("%.1f", mark), 80);
         }
 
-        // Add calculated values
+
         addCell(row, String.format("%.1f", assessment.getAverageWeekly()), 80);
         addCell(row, String.format("%.1f", assessment.getMonthlyMarks()), 80);
         addCell(row, String.format("%.1f", assessment.getTotalMarks()), 80);
 
-        // Add alternating row background
+
         if (tableAssessment.getChildCount() % 2 == 0) {
             row.setBackgroundColor(getResources().getColor(R.color.background_tertiary));
         }
@@ -103,7 +103,7 @@ public class SingleResult extends AppCompatActivity {
         textView.setGravity(Gravity.CENTER);
         textView.setPadding(8, 8, 8, 8);
 
-        // Apply cell style
+
         textView.setTextAppearance(R.style.TableCellStyle);
         row.addView(textView);
     }

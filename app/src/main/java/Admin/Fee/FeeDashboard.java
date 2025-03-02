@@ -62,8 +62,7 @@ public class FeeDashboard extends AppCompatActivity {
     }
 
     private void loadFeeData() {
-        // TODO: Load actual fee data from your database or API
-        // For now using dummy data
+        // TODO: DB CALL
         updateTotalCollections("1,25,000");
     }
 

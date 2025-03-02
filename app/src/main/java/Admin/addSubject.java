@@ -53,17 +53,17 @@ public class addSubject extends AppCompatActivity {
     }
 
     private void setupDropdowns() {
-        // Setup days dropdown
+
         String[] days = new String[]{"Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"};
         ArrayAdapter<String> daysAdapter = new ArrayAdapter<>(
                 this, R.layout.dropdown_item, days
         );
         dayDropdown.setAdapter(daysAdapter);
 
-        // Setup teachers dropdown (assuming you have a Teacher model and repository)
+        //  teachers dropdown
         loadTeachers();
 
-        // Setup campus dropdown
+        // campus dropdown
         loadCampuses();
     }
 
@@ -84,13 +84,13 @@ public class addSubject extends AppCompatActivity {
     }
 
     private void loadTeachers() {
-        // db call DB
+        //TODO db call DB
 
 
     }
 
     private void loadCampuses() {
-        // Similar implementation to loadTeachers() for campus data
+        //TODO DB Similar implementation to loadTeachers() for campus data
     }
     private Calendar getTimeFromInput(String timeInput) {
         String[] parts = timeInput.split(":"); // Assumes input is "HH:mm"
@@ -114,7 +114,7 @@ public class addSubject extends AppCompatActivity {
                         dayDropdown.getText().toString(),
                         getTimeFromInput(etTime.getText().toString()),
                         ((Teacher) teacherDropdown.getTag()).getId(),
-                        ((Campus) campusDropdown.getTag()).getCampusID(),
+                        ((Campus) campusDropdown.getTag()).getCampusId(),
                         Integer.parseInt(etYear.getText().toString()),
                         ((Teacher) teacherDropdown.getTag()).getName()
                 );
@@ -161,7 +161,7 @@ public class addSubject extends AppCompatActivity {
     }
 
     private void saveSubject(Subject subject) {
-        // TODO save logic
+        // TODO save logic DB
     }
 
 }

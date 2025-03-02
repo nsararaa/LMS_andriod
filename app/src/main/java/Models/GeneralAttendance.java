@@ -46,7 +46,7 @@ public class GeneralAttendance {
         }
     }
 
-    // Getters
+
     public int getRfid() { return rfid; }
     public Date getDate() { return date; }
     public LocalTime getTime() { return time; }

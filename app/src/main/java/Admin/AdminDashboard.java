@@ -9,6 +9,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.cardview.widget.CardView;
 
+import com.example.lms.MainActivity;
 import com.example.lms.R;
 
 import Admin.Subjects.SubjectDashboard;
@@ -25,14 +26,14 @@ public class AdminDashboard extends AppCompatActivity implements View.OnClickLis
         toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        // Set the title for the toolbar
+
         if (getSupportActionBar() != null) {
             getSupportActionBar().setTitle("Admin Dashboard");
         }
 
-        toolbar.setNavigationIcon(R.drawable.ic_menu); // Replace with your hamburger icon
+        toolbar.setNavigationIcon(R.drawable.ic_menu);
         toolbar.setNavigationOnClickListener(v -> {
-            // Handle navigation click
+
         });
     }
 //    @Override
@@ -70,7 +71,7 @@ public class AdminDashboard extends AppCompatActivity implements View.OnClickLis
         feeManagementCard.setOnClickListener(this);
         alumniCard.setOnClickListener(this);
 
-        // Get campus name from intent
+
         campusName = getIntent().getStringExtra("campusName");
         TextView header = findViewById(R.id.header);
         header.setText(campusName);
@@ -119,4 +120,7 @@ public class AdminDashboard extends AppCompatActivity implements View.OnClickLis
 
 
     }
+
+
+
 }

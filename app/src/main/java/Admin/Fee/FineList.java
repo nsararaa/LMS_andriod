@@ -22,29 +22,10 @@ import com.google.android.material.textfield.TextInputEditText;
 import java.util.ArrayList;
 import java.util.List;
 
-// Fine.java
-class Fine {
-    private String studentName;
-    private String studentId;
-    private double amount;
-    private boolean isWaived;
 
-    public Fine(String studentName, String studentId, double amount) {
-        this.studentName = studentName;
-        this.studentId = studentId;
-        this.amount = amount;
-        this.isWaived = false;
-    }
+import Models.Fine;
 
-    // Getters and setters
-    public String getStudentName() { return studentName; }
-    public String getStudentId() { return studentId; }
-    public double getAmount() { return amount; }
-    public boolean isWaived() { return isWaived; }
-    public void setWaived(boolean waived) { isWaived = waived; }
-}
 
-// FineAdapter.java
 class FineAdapter extends RecyclerView.Adapter<FineAdapter.FineViewHolder> {
     private List<Fine> fines;
     private List<Fine> filteredFines;
@@ -126,7 +107,7 @@ class FineAdapter extends RecyclerView.Adapter<FineAdapter.FineViewHolder> {
     }
 }
 
-// FineListActivity.java
+
 public class FineList extends AppCompatActivity implements FineAdapter.OnFineWaiverClickListener {
     private RecyclerView recyclerView;
     private FineAdapter adapter;
@@ -138,20 +119,20 @@ public class FineList extends AppCompatActivity implements FineAdapter.OnFineWai
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_fine_list);
 
-        // Initialize views
+
         recyclerView = findViewById(R.id.fineRecyclerView);
         searchEditText = findViewById(R.id.searchEditText);
         FloatingActionButton addFineButton = findViewById(R.id.addFine);
 
-        // Initialize fines list and adapter
+
         fines = new ArrayList<>();
         adapter = new FineAdapter(fines, this);
 
-        // Setup RecyclerView
+
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         recyclerView.setAdapter(adapter);
 
-        // Setup search functionality
+
         searchEditText.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {}
@@ -165,12 +146,12 @@ public class FineList extends AppCompatActivity implements FineAdapter.OnFineWai
             public void afterTextChanged(Editable s) {}
         });
 
-        // Setup FAB click listener
+
         addFineButton.setOnClickListener(v -> showAddFineDialog());
     }
 
     private void showAddFineDialog() {
-        // Implement your dialog to add new fine
+
     }
 
     @Override

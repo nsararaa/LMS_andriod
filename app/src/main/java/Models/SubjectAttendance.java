@@ -65,7 +65,7 @@ public class SubjectAttendance {
         }
     }
 
-    // Getters
+
     public int getAttendanceId() { return attendanceId; }
     public int getRfid() { return rfid; }
     public int getSubjectId() { return subjectId; }

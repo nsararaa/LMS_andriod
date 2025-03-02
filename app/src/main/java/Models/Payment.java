@@ -19,14 +19,14 @@ public class Payment {
         this.status = status;
     }
 
-    // Getters
+
     public String getStudentName() { return studentName; }
     public String getStudentId() { return studentId; }
     public double getAmount() { return amount; }
     public Date getPaymentDate() { return paymentDate; }
     public String getStatus() { return status; }
 
-    // Setters
+
     public void setStudentName(String studentName) { this.studentName = studentName; }
     public void setStudentId(String studentId) { this.studentId = studentId; }
     public void setAmount(double amount) { this.amount = amount; }

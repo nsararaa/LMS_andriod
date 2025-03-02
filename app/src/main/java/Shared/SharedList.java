@@ -37,12 +37,12 @@ public class SharedList extends AppCompatActivity {
     private ExtendedFloatingActionButton addSubjectFab;
     TextView header;
     private String[] getStudentNames() {
-        // TODO: Replace with actual data source
-        return new String[]{"Sara", "Manal", "S"};
+        //TODO DB CALL
+        return new String[]{"Sara", "M", "S"};
     }
 
     private String[] getTeacherNames() {
-        // TODO: Replace with actual data source
+        //TODO DB CALL
         return new String[]{"Ms. S", "Mr. B", "Ms. G"};
     }
 
@@ -99,11 +99,11 @@ public class SharedList extends AppCompatActivity {
     }
 
     private void loadList() {
-        // Initialize ListView and Search Bar
+
         ListView listView = findViewById(R.id.studentListView);
         TextInputEditText searchEditText = findViewById(R.id.searchEditText);
 
-        // Create ArrayAdapter
+
         adapter = new ArrayAdapter<>(
                 this,
                 android.R.layout.simple_list_item_1,
@@ -112,10 +112,10 @@ public class SharedList extends AppCompatActivity {
         );
         listView.setAdapter(adapter);
 
-        // Setup search functionality
+
         setupSearchListener(searchEditText);
 
-        // Handle item clicks
+
         setupItemClickListener(listView);
     }
 

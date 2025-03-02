@@ -59,12 +59,12 @@ public class QueryResponse extends AppCompatActivity {
 
     private void setupListeners() {
         attachFileButton.setOnClickListener(v -> {
-            // File attachment logic will be implemented later
+            //todo
             Toast.makeText(this, "File attachment coming soon", Toast.LENGTH_SHORT).show();
         });
 
         attachLinkButton.setOnClickListener(v -> {
-            // Link attachment logic will be implemented later
+
             Toast.makeText(this, "Link attachment coming soon", Toast.LENGTH_SHORT).show();
         });
 
@@ -82,7 +82,7 @@ public class QueryResponse extends AppCompatActivity {
         SimpleDateFormat dateFormat = new SimpleDateFormat("MMM dd, yyyy", Locale.getDefault());
         submissionDate.setText(dateFormat.format(query.getSubmissionDate()));
 
-        // If there's an existing response, populate it
+
         if (query.getResponse() != null) {
             responseInput.setText(query.getResponse());
         }
@@ -95,7 +95,7 @@ public class QueryResponse extends AppCompatActivity {
             return;
         }
 
-        // Save response
+        // TODO DB CALL ->upload
         query.setResponse(response);
 
         // Show success message and finish activity

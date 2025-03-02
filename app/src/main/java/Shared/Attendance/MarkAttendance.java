@@ -126,13 +126,13 @@ public class MarkAttendance extends AppCompatActivity {
 
         List<StudentAttendance> attendanceList = attendanceAdapter.getAttendanceList();
 
-        // Save attendance TODO:
+        // Save attendance TODO: DB
         Toast.makeText(this, "Attendance saved successfully", Toast.LENGTH_SHORT).show();
         finish();
     }
 
     private void loadStudentsForClass(String className) {
-        //  Replace with actual data TODO:
+        //  Replace with actual data TODO: DB
         List<StudentAttendance> studentList = DummyStudentData.getStudentsForClass(className, datePickerEdit.getText().toString());
         attendanceAdapter = new StudentAttendanceAdapter(studentList);
         studentsRecyclerView.setAdapter(attendanceAdapter);
@@ -146,7 +146,7 @@ public class MarkAttendance extends AppCompatActivity {
     }
 }
 
-// DUMMY REMOVE LATER
+//TODO DB CALL
 class DummyStudentData {
     static List<StudentAttendance> getStudentsForClass(String className, String date) {
         List<StudentAttendance> students = new ArrayList<>();

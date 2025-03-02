@@ -12,6 +12,8 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
+
+import com.example.lms.MainActivity;
 import com.example.lms.R;
 import com.google.android.material.card.MaterialCardView;
 
@@ -153,14 +155,18 @@ public class selectCampus extends AppCompatActivity {
 
 
     }
-    // Optional: Handle back press to exit app
+
     private long backPressTime;
+
     @Override
     public void onBackPressed() {
         if (backPressTime + 2000 > System.currentTimeMillis()) {
-            super.onBackPressed();
+            Intent intent = new Intent(this, MainActivity.class);
+            intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
+            startActivity(intent);
+            finish();
         } else {
-            Toast.makeText(this, "Press back again to exit", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "Press back again to return to login", Toast.LENGTH_SHORT).show();
         }
         backPressTime = System.currentTimeMillis();
     }

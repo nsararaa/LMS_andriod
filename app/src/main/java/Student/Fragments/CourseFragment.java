@@ -47,29 +47,29 @@ public class CourseFragment extends Fragment {
 
         Context context = requireContext();
 
-        // Set header text color
+
         headerText.setTextColor(ContextCompat.getColor(context, R.color.text_primary));
 
-        // Screen dimensions for button layout
+
         DisplayMetrics displayMetrics = new DisplayMetrics();
         requireActivity().getWindowManager().getDefaultDisplay().getMetrics(displayMetrics);
         int screenWidth = displayMetrics.widthPixels;
         int buttonWidth = (screenWidth - (16 * 10)) / 2;
         int buttonHeight = buttonWidth;
 
-        // Dynamically add course buttons
+
         for (String[] course : courseDetails) {
             Button button = new Button(context);
             button.setText(course[1]);
 
-            // Set layout parameters for buttons
+
             GridLayout.LayoutParams params = new GridLayout.LayoutParams();
             params.width = buttonWidth;
             params.height = buttonHeight;
             params.setMargins(16, 16, 16, 16);
             button.setLayoutParams(params);
 
-            // Set button background and text properties
+
             GradientDrawable drawable = new GradientDrawable();
             drawable.setShape(GradientDrawable.RECTANGLE);
             drawable.setColor(ContextCompat.getColor(context, R.color.primary_color_dark));

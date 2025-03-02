@@ -61,7 +61,7 @@ public class HomeFragment extends Fragment {
     public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        // Find views
+
         scheduleContainer = view.findViewById(R.id.scheduleContainer);
         announcement1Title = view.findViewById(R.id.announcement_1_title);
         announcement1Date = view.findViewById(R.id.announcement_1_date);
@@ -104,7 +104,7 @@ public class HomeFragment extends Fragment {
     }
 
     private void setupAnnouncementsView() {
-        // Directly set text on the TextViews found in the layout
+
         if (recentAnnouncements.size() > 0) {
             announcement1Title.setText(recentAnnouncements.get(0).title);
             announcement1Date.setText(recentAnnouncements.get(0).date);

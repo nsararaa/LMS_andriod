@@ -41,13 +41,13 @@ public class SubjectsEnrolled {
         }
     }
 
-    // Getters
+
     public int getRfid() { return rfid; }
     public int getSubjectId() { return subjectId; }
     public int getSubjectAttended() { return subjectAttended; }
     public int getTotalDays() { return totalDays; }
 
-    // Utility method
+
     public double getAttendancePercentage() {
         if (totalDays == 0) return 0.0;
         return ((double) subjectAttended / totalDays) * 100;

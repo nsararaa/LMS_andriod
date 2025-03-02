@@ -53,7 +53,7 @@ public class AddTeacher extends AppCompatActivity {
     }
 
     private void setupDropdowns() {
-        // Sample data - replace with your actual data
+        // TODO DB CALL
         ArrayList<String> subjects = new ArrayList<>(Arrays.asList(
                 "Mathematics", "Physics", "Chemistry", "Biology", "English",
                 "History", "Geography", "Computer Science"
@@ -81,14 +81,12 @@ public class AddTeacher extends AppCompatActivity {
 
     private void setupClickListeners() {
         btnSubmit.setOnClickListener(v -> validateAndSubmit());
-
+//TODO FILE
         btnBulkSubmit.setOnClickListener(v -> {
-            // Implement file picker logic here
             Toast.makeText(this, "Select Excel or CSV file", Toast.LENGTH_SHORT).show();
         });
 
         bulkUploadCard.setOnClickListener(v -> {
-            // Implement file picker logic here
             btnBulkSubmit.performClick();
         });
     }
@@ -112,8 +110,8 @@ public class AddTeacher extends AppCompatActivity {
         String campus = campusDropdown.getText().toString();
         String password = etPassword.getText().toString();
 
-        // TODO: Implement your registration logic here
-        // For now, just show a success message
+        // TODO:registration logic here DB
+
         Toast.makeText(this, "Teacher registered successfully!", Toast.LENGTH_SHORT).show();
     }
 

@@ -1,4 +1,4 @@
-package Shared;
+package Models;
 
 import android.content.Context;
 import android.content.SharedPreferences;
@@ -25,7 +25,7 @@ public class UserSession {
         return instance;
     }
 
-    // Save user session data
+
     public void saveUserSession(String role, String email, String userNo) {
         editor.putString(KEY_ROLE, role);
         editor.putString(KEY_EMAIL, email);
@@ -33,22 +33,22 @@ public class UserSession {
         editor.apply();
     }
 
-    // Get user role
+
     public String getRole() {
         return pref.getString(KEY_ROLE, "");
     }
 
-    // Get user email
+
     public String getEmail() {
         return pref.getString(KEY_EMAIL, "");
     }
 
-    // Get user number
+
     public String getUserNo() {
         return pref.getString(KEY_USER_NO, "");
     }
 
-    // Clear session (for logout)
+
     public void clearSession() {
         editor.clear();
         editor.apply();

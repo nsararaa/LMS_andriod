@@ -114,31 +114,32 @@ public class QuerySub extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_query);
 
-        // Initialize views
+
         recipientDropdown = findViewById(R.id.recipientDropdown);
         queryInput = findViewById(R.id.queryInput);
         queriesRecyclerView = findViewById(R.id.queriesRecyclerView);
         MaterialButton submitButton = findViewById(R.id.submitButton);
 
-        // Setup toolbar
+
         MaterialToolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        // Setup RecyclerView
+
         queryAdapter = new QueryAdapter(this);
         queriesRecyclerView.setLayoutManager(new LinearLayoutManager(this));
         queriesRecyclerView.setAdapter(queryAdapter);
 
-        // Setup recipient dropdown
+
         setupRecipientDropdown();
 
         // Setup submit button
         submitButton.setOnClickListener(v -> submitQuery());
 
-        // Load existing queries
+
         loadQueries();
     }
 
+    //TODO DB CALL
     private void setupRecipientDropdown() {
         String[] recipients = new String[] {
                 "Mr. John (Mathematics)",
@@ -170,15 +171,15 @@ public class QuerySub extends AppCompatActivity {
             return;
         }
 
-        // Create and save query
+
         Query query = new Query(selectedRecipient, queryText);
         queryAdapter.addQuery(query);
 
-        // Clear inputs
+
         recipientDropdown.setText("");
         queryInput.setText("");
 
-        // Show success message
+
         Snackbar.make(
                 findViewById(android.R.id.content),
                 "Query submitted successfully",
@@ -187,9 +188,9 @@ public class QuerySub extends AppCompatActivity {
     }
 
     private void loadQueries() {
-        // Sample data - in a real app, this would load from your backend
+
         List<Query> sampleQueries = new ArrayList<>();
-        // Add sample queries here
+        //TODO DB CALL
         queryAdapter.setQueries(sampleQueries);
     }
 

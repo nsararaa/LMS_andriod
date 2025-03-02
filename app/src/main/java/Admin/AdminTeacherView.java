@@ -89,7 +89,7 @@ public class AdminTeacherView extends AppCompatActivity {
     }
 
     private Teacher getTeacherData(String teacherId) {
-        //db call TODO
+        //db call TODO DB
         return new Teacher(
                 "Sarfraz raza",
                 "sarfraz@school.com",

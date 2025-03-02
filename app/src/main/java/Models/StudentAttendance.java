@@ -16,7 +16,7 @@ public class StudentAttendance {
         this.date = date;
     }
 
-    // Getters and setters
+
     public int getRfid() { return rfid; }
     public void setRfid(int rfid) { this.rfid = rfid; }
 

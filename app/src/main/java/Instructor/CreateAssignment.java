@@ -58,7 +58,7 @@ public class CreateAssignment extends AppCompatActivity {
                 if (uris != null && !uris.isEmpty()) {
                     selectedFiles.addAll(uris);
                     updateSelectedFilesText();
-                    // Hide upload layout and show selected files
+
                     uploadLayout.setVisibility(View.GONE);
                     selectedFilesText.setVisibility(View.VISIBLE);
                 }
@@ -103,7 +103,7 @@ public class CreateAssignment extends AppCompatActivity {
     private void setupListeners() {
         dueDateEditText.setOnClickListener(v -> showDatePicker());
 
-        // Make both the upload button and layout clickable
+
 
         uploadLayout.setOnClickListener(v -> launchFilePicker());
 
@@ -140,7 +140,7 @@ public class CreateAssignment extends AppCompatActivity {
             }
             selectedFilesText.setText(fileNames.toString());
 
-            // Add a "Clear" or "Remove" option
+            // remove option
             selectedFilesText.setOnClickListener(v -> showRemoveFileDialog());
         }
     }
@@ -221,15 +221,15 @@ public class CreateAssignment extends AppCompatActivity {
         progressDialog.setCancelable(false);
         progressDialog.show();
 
-        // Upload files first
+
         for (Uri fileUri : selectedFiles) {
-            // Here you would implement your actual file upload logic
+
             String fileName = getFileName(fileUri);
-            // After successful upload, add the URL to assignment
+            //TODO DB CALL -> upload
             assignment.addAttachment("https://your-server.com/files/" + fileName);
         }
 
-        // Here you would implement your actual assignment upload logic
+        //  TODO DB CALL implement your actual assignment upload logic
         new Handler().postDelayed(() -> {
             progressDialog.dismiss();
             Toast.makeText(this, "Assignment created successfully", Toast.LENGTH_SHORT).show();

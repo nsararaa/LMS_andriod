@@ -41,14 +41,14 @@ public class ViewAllAnnounc extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_view_all_announc);
 
-        // Initialize views
+
         initializeViews();
         setupToolbar();
         setupRecyclerView();
         setupSwipeRefresh();
         setupTabLayout();
 
-        // Initial load
+
         loadAnnouncements();
     }
 
@@ -58,11 +58,11 @@ public class ViewAllAnnounc extends AppCompatActivity {
         emptyView = findViewById(R.id.empty_view);
         tabLayout = findViewById(R.id.tab_layout);
 
-        // Initialize lists
+
         allAnnouncements = new ArrayList<>();
         unreadAnnouncements = new ArrayList<>();
 
-        // Setup adapter
+
         adapter = new AnnouncementAdapter(this, allAnnouncements);
         recyclerView.setAdapter(adapter);
     }
@@ -103,14 +103,14 @@ public class ViewAllAnnounc extends AppCompatActivity {
     private void loadAnnouncements() {
         swipeRefresh.setRefreshing(true);
         executorService.execute(() -> {
-            // Simulate network delay
+
             try {
                 Thread.sleep(1000);
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
 
-            // Get dummy data
+            //TODO DB CALL
             List<Announcement> loadedAnnouncements = getDummyAnnouncements();
 
             mainHandler.post(() -> {
@@ -128,7 +128,7 @@ public class ViewAllAnnounc extends AppCompatActivity {
     private List<Announcement> getDummyAnnouncements() {
         List<Announcement> announcements = new ArrayList<>();
 
-        // Add some dummy announcements
+        //TODO DB CALL
         Announcement announcement1 = new Announcement(
                 "End of Semester Schedule",
                 "Important dates for final exams and submissions. Please make note of all deadlines.",
@@ -167,7 +167,7 @@ public class ViewAllAnnounc extends AppCompatActivity {
         List<Announcement> displayList = tabPosition == 0 ? allAnnouncements : unreadAnnouncements;
         adapter.updateAnnouncements(displayList);
 
-        // Show/hide empty view
+
         if (displayList.isEmpty()) {
             recyclerView.setVisibility(View.GONE);
             emptyView.setVisibility(View.VISIBLE);
@@ -178,7 +178,7 @@ public class ViewAllAnnounc extends AppCompatActivity {
         }
     }
 
-    // Custom item decoration for spacing
+
     private class AnnouncementItemDecoration extends RecyclerView.ItemDecoration {
         @Override
         public void getItemOffsets(Rect outRect, View view, RecyclerView parent, RecyclerView.State state) {

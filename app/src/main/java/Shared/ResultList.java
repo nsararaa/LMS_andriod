@@ -41,23 +41,23 @@ public class ResultList extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_result_list);
 
-        // Initialize views
+
         studentListView = findViewById(R.id.studentListView);
         searchEditText = findViewById(R.id.searchEditText);
 
-        // Initialize student list
+
         studentList = new ArrayList<>();
-        addDummyData(); // Add dummy data to the list
+        addDummyData(); //TODO DB CALL
         adapter = new StudentAdapter(this, studentList);
         studentListView.setAdapter(adapter);
 
-        // Set up click listener for list items
+
         studentListView.setOnItemClickListener((parent, view, position, id) -> {
             Student student = studentList.get(position);
             openStudentDetails(student);
         });
 
-        // Set up search functionality
+
         searchEditText.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {}
@@ -71,10 +71,10 @@ public class ResultList extends AppCompatActivity {
             public void afterTextChanged(Editable s) {}
         });
     }
-
+    //TODO DB CALL
     private void addDummyData() {
         studentList.add(new Student(1, "Sara", "1234567890", 1));
-        studentList.add(new Student(2, "Manal", "9876543210", 2));
+        studentList.add(new Student(2, "M", "9876543210", 2));
 
     }
 

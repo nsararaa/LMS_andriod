@@ -52,24 +52,24 @@ public class AnnouncementAdapter extends RecyclerView.Adapter<AnnouncementAdapte
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         Announcement announcement = announcements.get(position);
 
-        // Set title
+
         holder.titleView.setText(announcement.getTitle());
 
-        // Set date
+
         SimpleDateFormat dateFormat = new SimpleDateFormat("MMM dd, yyyy", Locale.getDefault());
         holder.dateView.setText(dateFormat.format(announcement.getDate()));
 
-        // Set description
+
         holder.descriptionView.setText(announcement.getDescription());
 
-        // Set author info
+
         String authorText = announcement.getAuthorName();
         if (!TextUtils.isEmpty(announcement.getAuthorRole())) {
             authorText += " • " + announcement.getAuthorRole();
         }
         holder.authorView.setText(authorText);
 
-        // Handle unread indicator
+
         if (announcement.isRead()) {
             holder.unreadIndicator.setVisibility(View.GONE);
             holder.cardView.setCardBackgroundColor(context.getColor(R.color.background_secondary));
@@ -78,13 +78,13 @@ public class AnnouncementAdapter extends RecyclerView.Adapter<AnnouncementAdapte
             holder.cardView.setCardBackgroundColor(context.getColor(R.color.background_tertiary));
         }
 
-        // Set click listener
+
         holder.itemView.setOnClickListener(v -> {
             if (listener != null) {
                 listener.onAnnouncementClick(announcement);
             }
 
-            // Mark as read
+            // mark as read
             if (!announcement.isRead()) {
                 announcement.setRead(true);
                 notifyItemChanged(position);

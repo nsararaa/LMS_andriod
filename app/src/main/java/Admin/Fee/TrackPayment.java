@@ -55,7 +55,7 @@ public class TrackPayment extends AppCompatActivity {
         setupDatePickers();
         setupExportButton();
 
-        // Initial data load
+
         loadPaymentHistory();
     }
 
@@ -127,7 +127,7 @@ public class TrackPayment extends AppCompatActivity {
     private void loadPaymentHistory() {
         showLoading(true);
 
-        // TODO: Replace with actual database query
+        // TODO: DB CALL
 
         new Thread(() -> {
             List<Payment> payments = getDummyPaymentRecords();
@@ -167,7 +167,7 @@ public class TrackPayment extends AppCompatActivity {
     }
 
 
-    // TODO: REPLACE WITH ACTUAL DATA
+    // TODO: DB CALL
     private List<Payment> getDummyPaymentRecords() {
         List<Payment> records = new ArrayList<>();
         Random random = new Random();

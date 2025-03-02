@@ -20,7 +20,7 @@ public class Announcement {
         this.isRead = false;
     }
 
-    // Getters and setters
+
     public String getTitle() { return title; }
     public String getDescription() { return description; }
     public Date getDate() { return date; }

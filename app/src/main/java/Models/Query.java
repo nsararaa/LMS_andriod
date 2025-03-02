@@ -13,7 +13,7 @@ public class Query {
     private String submissionDate;
     private String status; // Replace QueryStatus with a String for status
 
-    // Constructor with all fields
+
     public Query(String recipient, String queryText, String response, String status, String submissionDate) {
         this.id = UUID.randomUUID().toString();
         this.recipient = recipient;
@@ -23,7 +23,7 @@ public class Query {
         this.submissionDate = submissionDate;
     }
 
-    // Constructor for new queries (defaults to PENDING status)
+
     public Query(String recipient, String queryText) {
         this.id = UUID.randomUUID().toString();
         this.recipient = recipient;
@@ -33,7 +33,7 @@ public class Query {
         this.submissionDate = new Date().toString();
     }
 
-    // Getters and Setters
+
     public String getId() {
         return id;
     }
@@ -52,7 +52,7 @@ public class Query {
 
     public void setResponse(String response) {
         this.response = response;
-        this.status = "Responded"; // Update status when a response is set
+        this.status = "Responded";
     }
 
     public String getSubmissionDate() {

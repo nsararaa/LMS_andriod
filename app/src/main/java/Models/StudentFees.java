@@ -60,7 +60,7 @@ public class StudentFees {
         }
     }
 
-    // Getters
+
     public int getStudentFeesId() { return studentFeesId; }
     public int getRfid() { return rfid; }
     public Date getStartMonth() { return startMonth; }
